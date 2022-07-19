@@ -81,7 +81,7 @@
             <div class="mdui-center" style="text-align: center;">
                 <div id="photo-tip">
 					<h1><script>document.write(getI18n('drag_your_photo_to_here'))</script></h1>
-                    <p>Or click here to choose a file</p>
+                    <p><script>document.write(getI18n('or_click_here_to_choose_a_file'))</script>e</p>
                 </div>
                 <p id="photo-info" class="mdui-hidden">Unknown</p>
             </div>
@@ -90,7 +90,7 @@
         <div>
             <div class="mdui-textfield">
                 <select id="logo-select" class="mdui-select mdui-textfield-input">
-                    <option value="0">None</option>
+                    <option value="0"><script>document.write(getI18n('none'))</script></option>
                     <option value="2">Hasselbled</option>
                     <option value="1">Leica</option>
                 </select>
@@ -108,17 +108,17 @@
                 <input id="location-input" class="mdui-textfield-input" type="text" placeholder="Location" readonly />
             </div>
             <div class="mdui-typo">
-                <a onclick="getLocation()" style="cursor: pointer;">Use current location</a>
+                <a onclick="getLocation()" style="cursor: pointer;"><script>document.write(getI18n('use_current_location'))</script></a>
             </div>
         </div>
         <br />
         <div class="mdui-float-right">
             <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
-                disabled>SAVE</button>
+                disabled><script>document.write(getI18n('save'))</script></button>
         </div>
         <br /><br />
         <div style="opacity: .64;">
-            <p>Not for commercial use.</p>
+            <p><script>document.write(getI18n('not_for_commercial_use'))</script></p>
             <p>© LTDSA 2022</p>
         </div>
     </div>
