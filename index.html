@@ -11,6 +11,38 @@
     <link href="https://cdn.staticfile.org/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/mdui/1.0.2/js/mdui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+    <script>
+        var $ = mdui.$;
+        var langLib;
+    	var langType = window.navigator.language.toLowerCase();
+        
+        $.ajax({
+	        url: `./${langType}.json`,
+	        async: false,
+	        dataType: 'json',
+	        success: res => {
+	            langLib = res;
+	        },
+            error: () => {
+                 $.ajax({
+	                url: './en-us.json',
+	                async: false,
+	                dataType: 'json',
+	                success: res => {
+	                    langLib = res;
+	                }
+                 });
+            }
+	    });
+        
+        function getI18n(item) {
+	        var i18nItem = null;
+	        if (typeof langLib[item] != 'undefined') {
+	            i18nItem = langLib[item];
+	        }
+	        return i18nItem;
+	    }
+    </script>
     <style>
         @font-face {
             font-family: 'MiSans';
@@ -48,7 +80,7 @@
             style="height: 256px; background-size: contain; background-repeat: no-repeat; background-position: center;" onclick="chooseFile()">
             <div class="mdui-center" style="text-align: center;">
                 <div id="photo-tip">
-                    <h1>Drag you photo to here</h1>
+                    <h1>document.write(getI18n('drag_your_photo_to_here'))</h1>
                     <p>Or click here to choose a file</p>
                 </div>
                 <p id="photo-info" class="mdui-hidden">Unknown</p>
