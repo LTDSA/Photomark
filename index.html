@@ -232,8 +232,9 @@
             reader.readAsDataURL(photoFile);
         }
 
-        function readImage(photoFile) {
+        function readImage(file) {
             console.log(photoFile);
+            photoFile = file;
             if (photoFile.type.indexOf('image') == -1) {
                 mdui.snackbar({
                     message: 'Please select a image file',
