@@ -263,7 +263,7 @@
                     photoCanvas.style.letterSpacing = '1px';
                     photoCtx.fillStyle = '#727272';
                     photoCtx.fillText($('#time-input').val(), 200, photoImage.height + 434);
-                    photoCtx.fillText($('#location-input').val(), photoImage.width - 1820, photoImage.height + 434);
+                    photoCtx.fillText($('#location-input').val(), photoImage.width - 74 * specLength, photoImage.height + 434);
 
                     if (parseInt($('#logo-select').val()) > 0) {
                         var logoImage = new Image();
@@ -277,10 +277,10 @@
                         }
 
                         logoImage.onload = () => {
-                            photoCtx.drawImage(logoImage, photoImage.width - 2250, photoImage.height + 190, 250, 250);
+                            photoCtx.drawImage(logoImage, photoImage.width - 74 * specLength - 430, photoImage.height + 190, 250, 250);
 
-                            photoCtx.moveTo(photoImage.width - 1900, photoImage.height + 190);
-                            photoCtx.lineTo(photoImage.width - 1900, photoImage.height + 440);
+                            photoCtx.moveTo(photoImage.width - 74 * specLength - 80, photoImage.height + 190);
+                            photoCtx.lineTo(photoImage.width - 74 * specLength - 80, photoImage.height + 440);
                             photoCtx.lineWidth = 10;
                             photoCtx.strokeStyle = '#cccccc';
                             photoCtx.stroke();
