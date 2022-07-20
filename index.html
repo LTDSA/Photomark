@@ -177,19 +177,12 @@
 
         function previewImage() {
             $.showOverlay();
-            var imageWidth;
             var imageHeight;
             photoCanvas.toBlob(canvasBlob => {
-                if (photoCanvas.width > photoCanvas.height) {
-                    imageWidth = '100%';
-                    imageHeight = `${document.body.clientWidth * .85 / photoCanvas.width * photoCanvas.height}px`;
-                } else {
-                    imageWidth = `${(document.body.clientHeight * .85 - 52) / photoCanvas.height * photoCanvas.width}px`;
-                    imageHeight = `${document.body.clientHeight * .85 - 52}px`;
-                }
+                imageHeight = `${document.body.clientWidth * .85 / photoCanvas.width * photoCanvas.height}px`;
                 $.hideOverlay();
                 mdui.dialog({
-                    content: `<img src="${URL.createObjectURL(canvasBlob)}" width="${imageWidth}" height="${imageHeight}" />`,
+                    content: `<img src="${URL.createObjectURL(canvasBlob)}" width="100%" height="${imageHeight}" />`,
                     cssClass: 'preview-dialog',
                     buttons: [
                         {
