@@ -187,7 +187,18 @@
                 $.hideOverlay();
                 mdui.dialog({
                     content: `<img src="${URL.createObjectURL(canvasBlob)}" width="${imageWidth}" height="${imageHeight}" />`,
-                    cssClass: 'preview-dialog'
+                    cssClass: 'preview-dialog',
+                    buttons: [
+                        {
+                            text: 'Cancel'
+                        },
+                        {
+                            text: 'Save',
+                            onClick: () => {
+                                saveImage();
+                            }
+                        }
+                    ]
                 });
             });
         }
