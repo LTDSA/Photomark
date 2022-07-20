@@ -10,5 +10,8 @@
     "location": "位置",
     "use_current_location": "使用当前位置",
     "save": "保存",
-    "not_for_commercial_use": "未获准商业用途。"
+    "not_for_commercial_use": "未获准商业用途。",
+    "please_select_a_image_file": "请选择图片文件",
+    "getting_location": "正在获取位置……",
+    "cant_get_your_location": "无法获取位置"
 }
