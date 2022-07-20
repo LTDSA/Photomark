@@ -168,6 +168,26 @@
             }
         }
 
+        function previewImage() {
+            $.showOverlay();
+            var imageWidth;
+            var imageHeight;
+            photoCanvas.toBlob(canvasBlob => {
+                if (photoCanvas.width > photoCanvas.length) {
+                    imageWidth = '100%';
+                    imageHeight = `${document.body.clientWidth * .85 / photoCanvas.width * photoCanvas.height}px`;
+                } else {
+                    imageWidth = `${document.body.clientHeight * .85 / photoCanvas.height * photoCanvas.width}px`;
+                    imageHeight = '100%';
+                }
+                $.hideOverlay();
+                mdui.dialog({
+                    content: `<img src="${URL.createObjectURL(canvasBlob)}" width="${imageWidth}" height="${imageHeight}" />`,
+                    cssClass: 'preview-dialog'
+                });
+            });
+        }
+
         function saveImage() {
             $('#save-btn').text(getI18n('saving'));
             document.querySelector('#save-btn').disabled = true;
