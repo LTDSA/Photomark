@@ -71,8 +71,12 @@
                     <option value="0">
                         <script>document.write(getI18n('none'))</script>
                     </option>
-                    <option value="2">Hasselbled</option>
-                    <option value="1">Leica</option>
+                    <option value="2">
+                        <script>document.write(getI18n('hasselbled'))</script>
+                    </option>
+                    <option value="1">
+                        <script>document.write(getI18n('leica'))</script>
+                    </option>
                 </select>
             </div>
             <div class="mdui-textfield">
@@ -95,8 +99,7 @@
         </div>
         <br />
         <div class="mdui-float-right">
-            <button id="preview-btn" class="mdui-btn mdui-ripple" onclick="drawImage(true)"
-                disabled>
+            <button id="preview-btn" class="mdui-btn mdui-ripple" onclick="drawImage(true)" disabled>
                 <script>document.write(getI18n('preview'))</script>
             </button>
             <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
@@ -193,7 +196,7 @@
                             text: 'Cancel'
                         },
                         {
-                            text: 'Save',
+                            text: getI18n('save'),
                             onClick: () => {
                                 saveImage();
                             }
