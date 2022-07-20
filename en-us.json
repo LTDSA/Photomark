@@ -10,6 +10,8 @@
     "location": "Location",
     "use_current_location": "Use current location",
     "save": "Save",
+    "saving": "Saving",
+    "preview": "Preview",
     "not_for_commercial_use": "Not for commercial use.",
     "please_select_a_image_file": "Please select a image file",
     "getting_location": "Getting location...",
