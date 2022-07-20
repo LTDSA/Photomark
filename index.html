@@ -290,7 +290,7 @@
 				success: res => {
 					var listLayout = '';
 					res.forEach(i => {
-						listLayout += `<div class="mdui-list-item">${i.login}</div>`
+						listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} contributions</div></div></div>`
 					});
 					mdui.dialog({
 						title: 'Contributors',
