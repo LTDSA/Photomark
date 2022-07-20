@@ -9,40 +9,40 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>Photomark</title>
     <link href="https://cdn.staticfile.org/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
-	<link href="./photomark.css" rel="stylesheet">
+    <link href="./photomark.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/mdui/1.0.2/js/mdui.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
     <script>
         var $ = mdui.$;
         var langLib;
-    	var langType = window.navigator.language.toLowerCase();
-        
+        var langType = window.navigator.language.toLowerCase();
+
         $.ajax({
-	        url: `./${langType}.json`,
-	        async: false,
-	        dataType: 'json',
-	        success: res => {
-	            langLib = res;
-	        },
+            url: `./${langType}.json`,
+            async: false,
+            dataType: 'json',
+            success: res => {
+                langLib = res;
+            },
             error: () => {
-                 $.ajax({
-	                url: './en-us.json',
-	                async: false,
-	                dataType: 'json',
-	                success: res => {
-	                    langLib = res;
-	                }
-                 });
+                $.ajax({
+                    url: './en-us.json',
+                    async: false,
+                    dataType: 'json',
+                    success: res => {
+                        langLib = res;
+                    }
+                });
             }
-	    });
-        
+        });
+
         function getI18n(item) {
-	        var i18nItem = null;
-	        if (typeof langLib[item] != 'undefined') {
-	            i18nItem = langLib[item];
-	        }
-	        return i18nItem;
-	    }
+            var i18nItem = null;
+            if (typeof langLib[item] != 'undefined') {
+                i18nItem = langLib[item];
+            }
+            return i18nItem;
+        }
     </script>
 </head>
 
@@ -50,11 +50,16 @@
     <div class="mdui-container">
         <br />
         <div id="photo-area" class="mdui-color-grey-200 mdui-ripple mdui-img-rounded mdui-valign"
-            style="height: 256px; background-size: contain; background-repeat: no-repeat; background-position: center;" onclick="chooseFile()">
+            style="height: 256px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+            onclick="chooseFile()">
             <div class="mdui-center" style="text-align: center;">
                 <div id="photo-tip">
-					<h1><script>document.write(getI18n('drag_your_photo_to_here'))</script></h1>
-                    <p><script>document.write(getI18n('or_click_here_to_choose_a_file'))</script></p>
+                    <h1>
+                        <script>document.write(getI18n('drag_your_photo_to_here'))</script>
+                    </h1>
+                    <p>
+                        <script>document.write(getI18n('or_click_here_to_choose_a_file'))</script>
+                    </p>
                 </div>
                 <p id="photo-info" class="mdui-hidden">Unknown</p>
             </div>
@@ -63,7 +68,9 @@
         <div>
             <div class="mdui-textfield">
                 <select id="logo-select" class="mdui-select mdui-textfield-input">
-                    <option value="0"><script>document.write(getI18n('none'))</script></option>
+                    <option value="0">
+                        <script>document.write(getI18n('none'))</script>
+                    </option>
                     <option value="2">Hasselbled</option>
                     <option value="1">Leica</option>
                 </select>
@@ -81,19 +88,27 @@
                 <input id="location-input" class="mdui-textfield-input" type="text" placeholder="Location" readonly />
             </div>
             <div class="mdui-typo">
-                <a onclick="getLocation()" style="cursor: pointer;"><script>document.write(getI18n('use_current_location'))</script></a>
+                <a onclick="getLocation()" style="cursor: pointer;">
+                    <script>document.write(getI18n('use_current_location'))</script>
+                </a>
             </div>
         </div>
         <br />
         <div class="mdui-float-right">
             <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
-                disabled><script>document.write(getI18n('save'))</script></button>
+                disabled>
+                <script>document.write(getI18n('save'))</script>
+            </button>
         </div>
         <br /><br /><br />
         <div class="mdui-typo" style="opacity: .8;">
-            <p style="margin: 0;"><script>document.write(getI18n('not_for_commercial_use'))</script></p>
-			<p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">Contributors</a></p>
+            <p style="margin: 0;">
+                <script>document.write(getI18n('not_for_commercial_use'))</script>
+            </p>
+            <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()"
+                    style="cursor: pointer;">Contributors</a></p>
         </div>
+        <br />
     </div>
     <script>
         var $ = mdui.$;
@@ -278,32 +293,32 @@
 
             document.querySelector('#save-btn').disabled = false;
         }
-		
-		function getContributors() {
-			$.showOverlay();
-			$.ajax({
-				url: 'https://api.github.com/repos/LTDSA/Photomark/contributors',
-				dataType: 'json',
-				complete: () => {
-					$.hideOverlay();
-				},
-				success: res => {
-					var listLayout = '';
-					res.forEach(i => {
-						listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} contributions</div></div></div>`
-					});
-					mdui.dialog({
-						title: 'Contributors',
-						content: `<div class="mdui-list">${listLayout}</div>`,
-						buttons: [
-							{
-								text: 'OK'
-							}
-						]
-					});
-				}
-			});
-		}
+
+        function getContributors() {
+            $.showOverlay();
+            $.ajax({
+                url: 'https://api.github.com/repos/LTDSA/Photomark/contributors',
+                dataType: 'json',
+                complete: () => {
+                    $.hideOverlay();
+                },
+                success: res => {
+                    var listLayout = '';
+                    res.forEach(i => {
+                        listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} contributions</div></div></div>`
+                    });
+                    mdui.dialog({
+                        title: 'Contributors',
+                        content: `<div class="mdui-list">${listLayout}</div>`,
+                        buttons: [
+                            {
+                                text: 'OK'
+                            }
+                        ]
+                    });
+                }
+            });
+        }
 
         $('#photo-area').on('dragover', function (e) {
             e.preventDefault();
