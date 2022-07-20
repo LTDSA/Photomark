@@ -160,7 +160,7 @@
         function getLocation() {
             if (navigator.geolocation) {
                 mdui.snackbar({
-                    message: 'Getting location...',
+                    message: getI18n('getting_location'),
                     position: 'right-top'
                 });
                 navigator.geolocation.getCurrentPosition(e => {
@@ -171,7 +171,7 @@
                     $('#location-input').val(`${changeToDFM(latitude)}N ${changeToDFM(longitude)}E`);
                 }, () => {
                     mdui.snackbar({
-                        message: "Can't get your location",
+                        message: getI18n('cant_get_your_location'),
                         position: 'right-top'
                     });
                 });
@@ -242,7 +242,7 @@
             photoFile = file;
             if (photoFile.type.indexOf('image') == -1) {
                 mdui.snackbar({
-                    message: 'Please select a image file',
+                    message: getI18n('please_select_a_image_file'),
                     position: 'right-top'
                 });
                 return;
