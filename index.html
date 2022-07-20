@@ -262,8 +262,8 @@
         }
 
         function readImage(file) {
-            console.log(photoFile);
             photoFile = file;
+            console.log(photoFile);
             if (photoFile.type.indexOf('image') == -1) {
                 mdui.snackbar({
                     message: getI18n('please_select_a_image_file'),
@@ -295,12 +295,20 @@
                         if (res.FocalLength && res.FNumber && res.ExposureTime && res.ISO) $('#lens-input').val(`${parseInt(res.FocalLength)}mm f/${res.FNumber.toFixed(1)} 1/${parseInt(res.ExposureTime ** -1)} ISO${res.ISO}`);
                         if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
                     });
+
+                    if (navigator.userAgent.indexOf('Safari/') > -1 && photoFile.size > 1024**3 * 5) {
+                        mdui.snackbar({
+                            message: 'This image cannot be saved in Safari',
+                            position: 'right-top'
+                        });
+                    }
                 }
             }
 
             reader.readAsDataURL(photoFile);
 
             document.querySelector('#save-btn').disabled = false;
+            $('#save-btn').text(getI18n('save'));
         }
 
         function getContributors() {
