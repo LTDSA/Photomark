@@ -250,17 +250,17 @@
                     dataType: 'json',
                     success: res => {
                         if (res[photoExif.Make] && res[photoExif.Make][photoExif.Model]) {
-                            $('#model-input').val(res[photoExif.Make][photoExif.Model]);
+                            $('#device-input').val(res[photoExif.Make][photoExif.Model]);
                         } else {
                             mdui.snackbar({
-                                message: 'Model not found',
+                                message: getI18n('model_not_found'),
                                 position: 'right-top'
                             });
                         }
                     },
                     error: () => {
                         mdui.snackbar({
-                            message: 'Cannot get model list',
+                            message: getI18n('cannot_get_model_list'),
                             position: 'right-top'
                         });
                     }
