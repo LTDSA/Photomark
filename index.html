@@ -11,7 +11,7 @@
     <link href="https://cdn.staticfile.org/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
 	<link href="./photomark.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/mdui/1.0.2/js/mdui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
     <script>
         var $ = mdui.$;
         var langLib;
@@ -89,10 +89,10 @@
             <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
                 disabled><script>document.write(getI18n('save'))</script></button>
         </div>
-        <br /><br />
-        <div class="mdui-typo" style="opacity: .64;">
-            <p><script>document.write(getI18n('not_for_commercial_use'))</script></p>
-			<p>© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">Contributors</a></p>
+        <br /><br /><br />
+        <div class="mdui-typo" style="opacity: .8;">
+            <p style="margin: 0;"><script>document.write(getI18n('not_for_commercial_use'))</script></p>
+			<p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">Contributors</a></p>
         </div>
     </div>
     <script>
