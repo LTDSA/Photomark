@@ -23,3 +23,7 @@ body {
 h1 {
     font-weight: bold;
 }
+
+.preview-dialog .mdui-dialog-content {
+    padding: 0;
+}
