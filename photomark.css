@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'MiSans';
+    font-weight: normal;
+    src: url(./MiSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'MiSans';
+    font-weight: bold;
+    src: url(./MiSans-Demibold.ttf);
+}
+
+body {
+    -webkit-user-select: none;
+            user-select: none;
+    font-family: MiSans;
+}
+
+.mdui-select {
+    font-family: MiSans;
+}
+
+h1 {
+    font-weight: bold;
+}
