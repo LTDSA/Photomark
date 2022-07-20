@@ -184,8 +184,8 @@
                     imageWidth = '100%';
                     imageHeight = `${document.body.clientWidth * .85 / photoCanvas.width * photoCanvas.height}px`;
                 } else {
-                    imageWidth = `${document.body.clientHeight * .85 / photoCanvas.height * photoCanvas.width}px`;
-                    imageHeight = '100%';
+                    imageWidth = `${(document.body.clientHeight * .85 - 52) / photoCanvas.height * photoCanvas.width}px`;
+                    imageHeight = `${document.body.clientHeight * .85 - 52}px`;
                 }
                 $.hideOverlay();
                 mdui.dialog({
@@ -193,7 +193,7 @@
                     cssClass: 'preview-dialog',
                     buttons: [
                         {
-                            text: 'Cancel'
+                            text: getI18n('cancel')
                         },
                         {
                             text: getI18n('save'),
