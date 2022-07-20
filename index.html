@@ -242,7 +242,7 @@
         function matchModel() {
             if (photoExif.Make && photoExif.Model) {
                 mdui.snackbar({
-                    message: 'Matching...',
+                    message: getI18n('matching'),
                     position: 'right-top'
                 });
                 $.ajax({
