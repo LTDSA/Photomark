@@ -251,10 +251,13 @@
                     photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
                     photoCtx.drawImage(photoImage, 0, 0);
 
+                    var specLength = $('#lens-input').val().length();
+
                     photoCtx.font = 'bold 120px MiSans';
                     photoCtx.fillStyle = 'black';
                     photoCtx.fillText($('#device-input').val(), 200, photoImage.height + 282);
-                    photoCtx.fillText($('#lens-input').val(), photoImage.width - 1820, photoImage.height + 282);
+                    //photoCtx.fillText($('#lens-input').val(), photoImage.width - 1820, photoImage.height + 282);
+                    photoCtx.fillText($('#lens-input').val(), photoImage.width - 74 * specLength, photoImage.height + 282);
 
                     photoCtx.font = 'normal 82px MiSans';
                     photoCanvas.style.letterSpacing = '1px';
@@ -337,7 +340,7 @@
                         if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
                     });
 
-                    if (navigator.userAgent.indexOf('Safari/') > -1 && photoFile.size > 1024 ** 3 * 5) {
+                    if (navigator.userAgent.indexOf('Safari/') > -1 && photoFile.size > 1024 ** 2 * 5) {
                         mdui.snackbar({
                             message: 'This image cannot be saved in Safari',
                             position: 'right-top'
