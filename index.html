@@ -169,11 +169,16 @@
         }
 
         function saveImage() {
-            var canvasData = photoCanvas.toDataURL('image/jpeg');
-            var imageLink = document.createElement('a');
-            imageLink.download = `photomark_${new Date().format('yyyyMMddhhmmss')}.jpg`;
-            imageLink.href = canvasData;
-            imageLink.click();
+            $('#save-btn').text(getI18n('saving'));
+            document.querySelector('#save-btn').disabled = true;
+            photoCanvas.toBlob(canvasBlob => {
+                var imageLink = document.createElement('a');
+                imageLink.download = `photomark_${new Date().format('yyyyMMddhhmmss')}.jpg`;
+                imageLink.href = URL.createObjectURL(canvasBlob);
+                imageLink.click();
+                $('#save-btn').text(getI18n('save'));
+                document.querySelector('#save-btn').disabled = false;
+            });
         }
 
         function getLocation() {
