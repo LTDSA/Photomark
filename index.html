@@ -159,7 +159,7 @@
             fileInput.click();
 
             fileInput.onchange = (e) => {
-                console.log(e.path[0].files[0]);
+                console.log(e);
                 readImage(e.path[0].files[0]);
             }
         }
