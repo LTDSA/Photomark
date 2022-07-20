@@ -90,9 +90,9 @@
                 disabled><script>document.write(getI18n('save'))</script></button>
         </div>
         <br /><br />
-        <div style="opacity: .64;">
+        <div class="mdui-typo" style="opacity: .64;">
             <p><script>document.write(getI18n('not_for_commercial_use'))</script></p>
-            <p>© LTDSA 2022</p>
+			<p>© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">Contributors</a></p>
         </div>
     </div>
     <script>
@@ -278,6 +278,32 @@
 
             document.querySelector('#save-btn').disabled = false;
         }
+		
+		function getContributors() {
+			$.showOverlay();
+			$.ajax({
+				url: 'https://api.github.com/repos/LTDSA/Photomark/contributors',
+				dataType: 'json',
+				complete: () => {
+					$.hideOverlay();
+				},
+				success: res => {
+					var listLayout = '';
+					res.forEach(i => {
+						listLayout += `<div class="mdui-list-item">${i.login}</div>`
+					});
+					mdui.dialog({
+						title: 'Contributors',
+						content: `<div class="mdui-list">${listLayout}</div>`,
+						buttons: [
+							{
+								text: 'OK'
+							}
+						]
+					});
+				}
+			});
+		}
 
         $('#photo-area').on('dragover', function (e) {
             e.preventDefault();
