@@ -95,6 +95,10 @@
         </div>
         <br />
         <div class="mdui-float-right">
+            <button id="preview-btn" class="mdui-btn mdui-ripple" onclick="drawImage(true)"
+                disabled>
+                <script>document.write(getI18n('preview'))</script>
+            </button>
             <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
                 disabled>
                 <script>document.write(getI18n('save'))</script>
@@ -337,6 +341,7 @@
             reader.readAsDataURL(photoFile);
 
             document.querySelector('#save-btn').disabled = false;
+            document.querySelector('#preview-btn').disabled = false;
             $('#save-btn').text(getI18n('save'));
         }
 
