@@ -94,7 +94,7 @@
             <div class="mdui-typo">
                 <a onclick="getLocation()" style="cursor: pointer;">
                     <script>document.write(getI18n('use_current_location'))</script>
-                </a>
+                </a> | <a onclick="matchModel()" style="cursor: pointer;">Match model</a>
             </div>
         </div>
         <br />
@@ -122,6 +122,7 @@
         var photoFile;
         var photoCanvas = document.querySelector('#photo-canvas');
         var photoCtx = photoCanvas.getContext('2d');
+        var photoExif;
 
         Date.prototype.format = function (fmt) {
             var o = {
@@ -238,6 +239,40 @@
             }
         }
 
+        function matchModel() {
+            if (photoExif.Make && photoExif.Model) {
+                mdui.snackbar({
+                    message: 'Matching...',
+                    position: 'right-top'
+                });
+                $.ajax({
+                    url: './model.json',
+                    dataType: 'json',
+                    success: res => {
+                        if (res[photoExif.Make] && res[photoExif.Make][photoExif.Model]) {
+                            $('#model-input').val(res[photoExif.Make][photoExif.Model]);
+                        } else {
+                            mdui.snackbar({
+                                message: 'Model not found',
+                                position: 'right-top'
+                            });
+                        }
+                    },
+                    error: () => {
+                        mdui.snackbar({
+                            message: 'Cannot get model list',
+                            position: 'right-top'
+                        });
+                    }
+                });
+            } else {
+                mdui.snackbar({
+                    message: 'Cannot match unknown model',
+                    position: 'right-top'
+                });
+            }
+        }
+
         function drawImage(preview) {
             if (typeof preview == 'undefined') preview = false;
             var reader = new FileReader();
@@ -333,6 +368,7 @@
 
                     exifr.parse(e.target.result).then(res => {
                         console.log(res);
+                        photoExif = res;
                         if (res.Model) $('#device-input').val(res.Model);
                         if (res['39424'] && typeof res['39424'] == 'string') $('#device-input').val(res['39424']);
                         if (res.CreateDate) $('#time-input').val(new Date(res.CreateDate).format('yyyy.MM.dd hh:mm:ss'));
