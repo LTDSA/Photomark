@@ -9,6 +9,7 @@
     "lens_info": "Lens info",
     "location": "Location",
     "use_current_location": "Use current location",
+    "match_model": "Match model",
     "cancel": "Cancel",
     "save": "Save",
     "saving": "Saving",
@@ -16,5 +17,8 @@
     "not_for_commercial_use": "Not for commercial use.",
     "please_select_a_image_file": "Please select a image file",
     "getting_location": "Getting location...",
-    "cant_get_your_location": "Can't get your location"
+    "cant_get_your_location": "Can't get your location",
+    "matching": "Matching...",
+    "cannot_get_model_list": "Cannot get model list",
+    "model_not_found": "Model not found"
 }
