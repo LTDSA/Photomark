@@ -378,7 +378,13 @@
                         if (res.Model) $('#device-input').val(res.Model);
                         if (res['39424'] && typeof res['39424'] == 'string') $('#device-input').val(res['39424']);
                         if (res.CreateDate) $('#time-input').val(new Date(res.CreateDate).format('yyyy.MM.dd hh:mm:ss'));
-                        if (res.FocalLength && res.FNumber && res.ExposureTime && res.ISO) $('#lens-input').val(`${parseInt(res.FocalLength)}mm f/${res.FNumber.toFixed(1)} 1/${parseInt(res.ExposureTime ** -1)} ISO${res.ISO}`);
+
+                        if (res.FocalLength) $('#lens-input').val(`${parseInt(res.FocalLength)}mm`);
+                        if (res.FocalLengthIn35mmFormat) $('#lens-input').val(`${parseInt(res.FocalLengthIn35mmFormat)}mm`);
+                        if (res.FNumber) $('#lens-input').val(`${$('#lens-input').val()} f/${res.FNumber.toFixed(1)}`);
+                        if (res.ExposureTime) $('#lens-input').val(`${$('#lens-input').val()} 1/${parseInt(res.ExposureTime ** -1)}`);
+                        if (res.ISO) $('#lens-input').val(`${$('#lens-input').val()} ISO${res.ISO}`);
+                        //if (res.FocalLength && res.FNumber && res.ExposureTime && res.ISO) $('#lens-input').val(`${parseInt(res.FocalLength)}mm f/${res.FNumber.toFixed(1)} 1/${parseInt(res.ExposureTime ** -1)} ISO${res.ISO}`);
                         if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
                     });
 
