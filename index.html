@@ -105,7 +105,9 @@
             <div class="mdui-typo">
                 <a onclick="getLocation()" style="cursor: pointer;">
                     <script>document.write(getI18n('use_current_location'))</script>
-                </a> | <a onclick="matchModel()" style="cursor: pointer;"><script>document.write(getI18n('match_model'))</script></a>
+                </a> | <a onclick="matchModel()" style="cursor: pointer;">
+                    <script>document.write(getI18n('match_model'))</script>
+                </a>
             </div>
         </div>
         <br />
@@ -292,15 +294,20 @@
                 photoImage.src = e.target.result;
                 photoImage.onload = () => {
                     if (parseInt($('#zoom-select').val()) == 2) {
-                        photoImage.width = photoImage.width * 2;
-                        photoImage.height = photoImage.height * 2;
-                    }
+                        photoCanvas.width = photoImage.width * 2;
+                        photoCanvas.height = photoImage.height * 2 + 614;
 
-                    photoCanvas.width = photoImage.width;
-                    photoCanvas.height = photoImage.height + 614;
-                    photoCtx.fillStyle = 'white';
-                    photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
-                    photoCtx.drawImage(photoImage, 0, 0);
+                        photoCtx.fillStyle = 'white';
+                        photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
+                        photoCtx.drawImage(photoImage, 0, 0, photoImage.width * 2, photoImage.height * 2);
+                    } else {
+                        photoCanvas.width = photoImage.width;
+                        photoCanvas.height = photoImage.height + 614;
+
+                        photoCtx.fillStyle = 'white';
+                        photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
+                        photoCtx.drawImage(photoImage, 0, 0);
+                    }
 
                     var specLength = $('#lens-input').val().length;
 
