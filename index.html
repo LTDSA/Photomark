@@ -83,6 +83,14 @@
                 </select>
             </div>
             <div class="mdui-textfield">
+                <select id="zoom-select" class="mdui-select mdui-textfield-input">
+                    <option value="1">
+                        <script>document.write(getI18n('original_size'))</script>
+                    </option>
+                    <option value="2">2x</option>
+                </select>
+            </div>
+            <div class="mdui-textfield">
                 <input id="device-input" class="mdui-textfield-input" type="text" placeholder="Device name" readonly />
             </div>
             <div class="mdui-textfield">
@@ -283,6 +291,11 @@
                 var photoImage = new Image();
                 photoImage.src = e.target.result;
                 photoImage.onload = () => {
+                    if (parseInt($('#zoom-select').val()) == 2) {
+                        photoImage.width = photoImage.width * 2;
+                        photoImage.height = photoImage.height * 2;
+                    }
+
                     photoCanvas.width = photoImage.width;
                     photoCanvas.height = photoImage.height + 614;
                     photoCtx.fillStyle = 'white';
