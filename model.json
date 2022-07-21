@@ -5,10 +5,20 @@
         "FC4170": "DJI Mavic 3",
         "FC7303": "DJI Mini 2"
     },
+    "HONOR": {
+        "ELZ-AN00": "HONOR Magic 3",
+    },
     "HUAWEI": {
+        "ALP-AL00": "HUAWEI Mate 10",
+        "ANA-AN00": "HUAWEI P40",
+        "VOG-AL00": "HUAWEI P30 Pro",
         "VTR-AL00": "HUAWEI P10"
     },
+    "OnePlus": {
+        "ONEPLUS A3010": "OnePlus 3T",
+    },
     "SONY": {
+        "DSC-RX0M2": "SONY RX0 II",
         "ILCE-7M2": "SONY Alpha 7 II"
     }
 }
