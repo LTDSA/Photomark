@@ -62,6 +62,33 @@
         "ILCE-7SM3": "SONY Alpha 7S III"
     },
     "Sony": {
-        "SO-02K": "Xperia XZ1 Compact"
+        "SO-01E": "Xperia AX",
+        "SO-01H": "Xperia Z5",
+        "SO-01J": "Xperia XZ",
+        "SO-01K": "Xperia XZ1",
+        "SO-01L": "Xperia XZ3",
+        "SO-02D": "Xperia NX",
+        "SO-02E": "Xperia Z",
+        "SO-02H": "Xperia Z5 Compact",
+        "SO-02J": "Xperia X Compact",
+        "SO-02K": "Xperia XZ1 Compact",
+        "SO-02L": "Xperia Ace",
+        "SO-03E": "Xperia Tablet Z",
+        "SO-03H": "Xperia Z5 Premium",
+        "SO-03J": "Xperia XZs",
+        "SO-03K": "Xperia XZ2",
+        "SO-03L": "Xperia 1",
+        "SO-04F": "Xperia A2",
+        "SO-04J": "Xperia XZ Premium",
+        "SO-04K": "Xperia XZ2 Premium",
+        "SO-05D": "Xperia SX",
+        "SO-05G": "Xperia Z4 Tablet",
+        "SO-05K": "Xperia XZ2 Compact",
+        "SO-41A": "Xperia 10 II",
+        "SO-41B": "Xperia Ace II",
+        "SO-51A": "Xperia 1 II",
+        "SO-51B": "Xperia 1 III",
+        "SO-52A": "Xperia 5 II",
+        "SO-52B": "Xperia 10 III"
     }
 }
