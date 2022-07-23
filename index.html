@@ -67,6 +67,7 @@
         <canvas id="photo-canvas" class="mdui-hidden"></canvas>
         <div>
             <div class="mdui-textfield">
+                <label class="mdui-textfield-label"><script>document.write(getI18n('logo_type'))</script></label>
                 <select id="logo-select" class="mdui-select mdui-textfield-input">
                     <option value="0">
                         <script>document.write(getI18n('none'))</script>
@@ -83,6 +84,7 @@
                 </select>
             </div>
             <div class="mdui-textfield">
+                <label class="mdui-textfield-label"><script>document.write(getI18n('image_scale'))</script></label>
                 <select id="zoom-select" class="mdui-select mdui-textfield-input">
                     <option value="1">
                         <script>document.write(getI18n('original_size'))</script>
@@ -409,6 +411,8 @@
                         if (res.ISO) $('#lens-input').val(`${$('#lens-input').val()} ISO${res.ISO}`);
                         //if (res.FocalLength && res.FNumber && res.ExposureTime && res.ISO) $('#lens-input').val(`${parseInt(res.FocalLength)}mm f/${res.FNumber.toFixed(1)} 1/${parseInt(res.ExposureTime ** -1)} ISO${res.ISO}`);
                         if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
+                        
+                        mdui.mutation();
                     });
 
                     if (navigator.userAgent.indexOf('Mobile') > -1 && navigator.userAgent.indexOf('Safari/') > -1 && photoFile.size > 1024 ** 2 * 5) {
