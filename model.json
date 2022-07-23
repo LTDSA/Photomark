@@ -1,10 +1,14 @@
 {
     "DJI": {
+        "FC220": "DJI Mavic Pro",
         "FC300SE": "DJI Phantom 3 SE",
+        "FC330": "DJI Phantom 4",
         "FC350Z": "DJI Zenmuse X3 Zoom",
+        "FC550": "DJI Zenmuse X5",
         "FC3411": "DJI Air 2S",
         "FC3582": "DJI Mini 3 Pro",
         "FC4170": "DJI Mavic 3",
+        "FC6310": "DJI Phantom 4 Pro",
         "FC6310R": "DJI Phantom 4 RTK",
         "FC6520": "DJI Zenmuse X5S",
         "FC7303": "DJI Mini 2"
