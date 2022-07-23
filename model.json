@@ -1,10 +1,14 @@
 {
     "DJI": {
+        "FC200": "DJI Phantom 2 Vision",
         "FC220": "DJI Mavic Pro",
+        "FC300S": "DJI Phantom 3 Advanced",
         "FC300SE": "DJI Phantom 3 SE",
         "FC330": "DJI Phantom 4",
+        "FC350H": "DJI Zenmuse X3",
         "FC350Z": "DJI Zenmuse X3 Zoom",
         "FC550": "DJI Zenmuse X5",
+        "FC3170": "DJI Mavic Air 2",
         "FC3411": "DJI Air 2S",
         "FC3582": "DJI Mini 3 Pro",
         "FC4170": "DJI Mavic 3",
@@ -19,16 +23,43 @@
     "HUAWEI": {
         "ALP-AL00": "HUAWEI Mate 10",
         "ANA-AN00": "HUAWEI P40",
+        "BLA-AL00": "HUAWEI Mate 10 Pro",
+        "CLT-AL00": "HUAWEI P20 Pro",
+        "ELE-AL00": "HUAWEI P30",
+        "EML-AL00": "HUAWEI P20",
+        "EVA-AL10": "HUAWEI P9",
+        "GRA-UL10": "HUAWEI P8",
+        "HMA-AL00": "HUAWEI Mate 20",
+        "LIO-AN00": "HUAWEI Mate 30 Pro",
+        "LYA-AL00": "HUAWEI Mate 20 Pro",
+        "MHA-AL00": "HUAWEI Mate 9",
+        "TAS-AL00": "HUAWEI Mate 30",
+        "TAS-AN00": "HUAWEI Mate 30",
         "VOG-AL00": "HUAWEI P30 Pro",
+        "VKY-AL00": "HUAWEI P10 Plus",
         "VTR-AL00": "HUAWEI P10"
     },
     "OnePlus": {
-        "ONEPLUS A3010": "OnePlus 3T"
+        "ONEPLUS A3000": "OnePlus 3",
+        "ONEPLUS A3010": "OnePlus 3T",
+        "ONEPLUS A5000": "OnePlus 5",
+        "ONEPLUS A5010": "OnePlus 5T",
+        "ONEPLUS A6000": "OnePlus 6",
+        "ONEPLUS A6010": "OnePlus 6T"
     },
     "SONY": {
         "DSC-RX0M2": "SONY RX0 II",
         "ILCE-7": "SONY Alpha 7",
-        "ILCE-7M2": "SONY Alpha 7 II"
+        "ILCE-7M2": "SONY Alpha 7 II",
+        "ILCE-7M3": "SONY Alpha 7 III",
+        "ILCE-7M4": "SONY Alpha 7 IV",
+        "ILCE-7R": "SONY Alpha 7R",
+        "ILCE-7RM2": "SONY Alpha 7R II",
+        "ILCE-7RM3": "SONY Alpha 7R III",
+        "ILCE-7RM4": "SONY Alpha 7R IV",
+        "ILCE-7S": "SONY Alpha 7S",
+        "ILCE-7SM2": "SONY Alpha 7S II",
+        "ILCE-7SM3": "SONY Alpha 7S III"
     },
     "Sony": {
         "SO-02K": "Xperia XZ1 Compact"
