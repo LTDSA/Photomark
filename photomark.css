@@ -10,10 +10,26 @@
     src: url(./MiSans-Demibold.ttf);
 }
 
+@font-face {
+    font-family: 'HarmonyOS Sans';
+    font-weight: normal;
+    src: url(./HarmonyOS_Sans_Regular.ttf);
+}
+
+@font-face {
+    font-family: 'HarmonyOS Sans';
+    font-weight: bold;
+    src: url(./HarmonyOS_Sans_Medium.ttf);
+}
+
 body {
     -webkit-user-select: none;
             user-select: none;
     font-family: MiSans;
+}
+
+.harmony-sans {
+    font-family: HarmonyOS Sans !important;
 }
 
 .mdui-select {
