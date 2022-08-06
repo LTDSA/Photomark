@@ -66,84 +66,110 @@
         </div>
         <canvas id="photo-canvas" class="mdui-hidden"></canvas>
         <div>
-            <div class="mdui-textfield">
-                <label class="mdui-textfield-label"><script>document.write(getI18n('logo_type'))</script></label>
-                <select id="logo-select" class="mdui-select mdui-textfield-input">
-                    <option value="0">
-                        <script>document.write(getI18n('none'))</script>
-                    </option>
-                    <option value="2">
-                        <script>document.write(getI18n('hasselbled'))</script>
-                    </option>
-                    <option value="1">
-                        <script>document.write(getI18n('leica'))</script>
-                    </option>
-                    <option value="4">
-                        <script>document.write(getI18n('nikon'))</script>
-                    </option>
-                    <option value="6">
-                        <script>document.write(getI18n('oneplus'))</script>
-                    </option>
-                    <option value="5">
-                        <script>document.write(getI18n('xiaomi'))</script>
-                    </option>
-                    <option value="3">
-                        <script>document.write(getI18n('zeiss'))</script>
-                    </option>
-                </select>
-            </div>
-            <div class="mdui-textfield">
-                <label class="mdui-textfield-label"><script>document.write(getI18n('image_scale'))</script></label>
-                <select id="zoom-select" class="mdui-select mdui-textfield-input">
-                    <option value="1">
-                        <script>document.write(getI18n('original_size'))</script>
-                    </option>
-                    <option value="2">2x</option>
-                </select>
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label"><script>document.write(getI18n('device_name'))</script></label>
-                <input id="device-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label"><script>document.write(getI18n('time'))</script></label>
-                <input id="time-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label"><script>document.write(getI18n('lens_info'))</script></label>
-                <input id="lens-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label"><script>document.write(getI18n('location'))</script></label>
-                <input id="location-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-typo">
-                <a onclick="getLocation()" style="cursor: pointer;">
-                    <script>document.write(getI18n('use_current_location'))</script>
-                </a> | <a onclick="matchModel()" style="cursor: pointer;">
-                    <script>document.write(getI18n('match_model'))</script>
-                </a>
+            <div class="mdui-row-xs-2 mdui-grid-list">
+                <div class="mdui-col">
+                    <div class="mdui-textfield">
+                        <label class="mdui-textfield-label">
+                            <script>document.write(getI18n('logo_type'))</script>
+                        </label>
+                        <select id="logo-select" class="mdui-select mdui-textfield-input">
+                            <option value="0">
+                                <script>document.write(getI18n('none'))</script>
+                            </option>
+                            <option value="2">
+                                <script>document.write(getI18n('hasselbled'))</script>
+                            </option>
+                            <option value="1">
+                                <script>document.write(getI18n('leica'))</script>
+                            </option>
+                            <option value="4">
+                                <script>document.write(getI18n('nikon'))</script>
+                            </option>
+                            <option value="6">
+                                <script>document.write(getI18n('oneplus'))</script>
+                            </option>
+                            <option value="5">
+                                <script>document.write(getI18n('xiaomi'))</script>
+                            </option>
+                            <option value="3">
+                                <script>document.write(getI18n('zeiss'))</script>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mdui-col">
+                    <div class="mdui-textfield">
+                        <label class="mdui-textfield-label">Fonts</label>
+                        <select id="font-select" class="mdui-select mdui-textfield-input">
+                            <option value="1">MiSans</option>
+                            <option value="2" disabled>HarmonyOS Sans</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
-        <br />
-        <div class="mdui-float-right">
-            <button id="preview-btn" class="mdui-btn mdui-ripple" onclick="drawImage(true)" disabled>
-                <script>document.write(getI18n('preview'))</script>
-            </button>
-            <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
-                disabled>
-                <script>document.write(getI18n('save'))</script>
-            </button>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">
+                <script>document.write(getI18n('image_scale'))</script>
+            </label>
+            <select id="zoom-select" class="mdui-select mdui-textfield-input">
+                <option value="1">
+                    <script>document.write(getI18n('original_size'))</script>
+                </option>
+                <option value="2">2x</option>
+            </select>
         </div>
-        <br /><br /><br />
-        <div class="mdui-typo" style="opacity: .8;">
-            <p style="margin: 0;">
-                <script>document.write(getI18n('not_for_commercial_use'))</script>
-            </p>
-            <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()"
-                    style="cursor: pointer;">Contributors</a></p>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">
+                <script>document.write(getI18n('device_name'))</script>
+            </label>
+            <input id="device-input" class="mdui-textfield-input" type="text" readonly />
         </div>
-        <br />
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">
+                <script>document.write(getI18n('time'))</script>
+            </label>
+            <input id="time-input" class="mdui-textfield-input" type="text" readonly />
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">
+                <script>document.write(getI18n('lens_info'))</script>
+            </label>
+            <input id="lens-input" class="mdui-textfield-input" type="text" readonly />
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">
+                <script>document.write(getI18n('location'))</script>
+            </label>
+            <input id="location-input" class="mdui-textfield-input" type="text" readonly />
+        </div>
+        <div class="mdui-typo">
+            <a onclick="getLocation()" style="cursor: pointer;">
+                <script>document.write(getI18n('use_current_location'))</script>
+            </a> | <a onclick="matchModel()" style="cursor: pointer;">
+                <script>document.write(getI18n('match_model'))</script>
+            </a>
+        </div>
+    </div>
+    <br />
+    <div class="mdui-float-right">
+        <button id="preview-btn" class="mdui-btn mdui-ripple" onclick="drawImage(true)" disabled>
+            <script>document.write(getI18n('preview'))</script>
+        </button>
+        <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
+            disabled>
+            <script>document.write(getI18n('save'))</script>
+        </button>
+    </div>
+    <br /><br /><br />
+    <div class="mdui-typo" style="opacity: .8;">
+        <p style="margin: 0;">
+            <script>document.write(getI18n('not_for_commercial_use'))</script>
+        </p>
+        <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">Contributors</a>
+        </p>
+    </div>
+    <br />
     </div>
     <script>
         var $ = mdui.$;
@@ -420,7 +446,7 @@
                         if (res.ISO) $('#lens-input').val(`${$('#lens-input').val()} ISO${res.ISO}`);
                         //if (res.FocalLength && res.FNumber && res.ExposureTime && res.ISO) $('#lens-input').val(`${parseInt(res.FocalLength)}mm f/${res.FNumber.toFixed(1)} 1/${parseInt(res.ExposureTime ** -1)} ISO${res.ISO}`);
                         if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
-                        
+
                         mdui.mutation();
                     });
 
