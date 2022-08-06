@@ -66,7 +66,7 @@
         </div>
         <canvas id="photo-canvas" class="mdui-hidden"></canvas>
         <div>
-            <div class="mdui-row-xs-2 mdui-grid-list">
+            <div class="mdui-row-xs-2">
                 <div class="mdui-col">
                     <div class="mdui-textfield">
                         <label class="mdui-textfield-label">
@@ -101,8 +101,8 @@
                     <div class="mdui-textfield">
                         <label class="mdui-textfield-label">Fonts</label>
                         <select id="font-select" class="mdui-select mdui-textfield-input">
-                            <option value="1">MiSans</option>
-                            <option value="2" disabled>HarmonyOS Sans</option>
+                            <option class="mi-sans" value="1">MiSans</option>
+                            <option class="harmony-sans" value="2" disabled>HarmonyOS Sans</option>
                         </select>
                     </div>
                 </div>
@@ -361,13 +361,21 @@
 
                     var specLength = $('#lens-input').val().length;
 
-                    photoCtx.font = 'bold 120px MiSans';
+                    if (parseInt($('#font-select').val()) == 1) {
+                        photoCtx.font = 'bold 120px MiSans';
+                    } else {
+                        photoCtx.font = 'bold 120px HarmonyOS Sans';
+                    }
                     photoCtx.fillStyle = 'black';
                     photoCtx.fillText($('#device-input').val(), 200, photoHeight + 282);
                     //photoCtx.fillText($('#lens-input').val(), photoImage.width - 1820, photoImage.height + 282);
                     photoCtx.fillText($('#lens-input').val(), photoWidth - 74 * specLength, photoHeight + 282);
 
-                    photoCtx.font = 'normal 82px MiSans';
+                    if (parseInt($('#font-select').val()) == 1) {
+                        photoCtx.font = 'normal 82px MiSans';
+                    } else {
+                        photoCtx.font = 'normal 82px HarmonyOS Sans';
+                    }
                     photoCanvas.style.letterSpacing = '1px';
                     photoCtx.fillStyle = '#727272';
                     photoCtx.fillText($('#time-input').val(), 200, photoHeight + 434);
@@ -510,6 +518,22 @@
             console.log(e);
 
             readImage(e.dataTransfer.files[0]);
+        });
+
+        $('#font-select').on('change', () => {
+            switch (parseInt($('#font-select').val())) {
+                case 1:
+                    $('body').removeClass('harmony-sans');
+                    break;
+                case 2:
+                    $('body').addClass('harmony-sans');
+                    break;
+            }
+
+            mdui.snackbar({
+                message: 'Changing fonts, please wait...',
+                position: 'right-top'
+            });
         });
     </script>
 </body>
