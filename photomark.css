@@ -28,6 +28,10 @@ body {
     font-family: MiSans;
 }
 
+.mi-sans {
+    font-family: MiSans !important;
+}
+
 .harmony-sans {
     font-family: HarmonyOS Sans !important;
 }
