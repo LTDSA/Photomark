@@ -105,6 +105,8 @@
                         <select id="font-select" class="mdui-select mdui-textfield-input">
                             <option class="mi-sans" value="1">MiSans</option>
                             <option class="harmony-sans" value="2">HarmonyOS Sans</option>
+                            <option class="oppo-sans" value="3" disabled>OPPOSans</option>
+                            <option class="sf-pro" value="4">SF Pro Display</option>
                         </select>
                     </div>
                 </div>
@@ -523,12 +525,21 @@
         });
 
         $('#font-select').on('change', () => {
+            $('body').removeClass('harmony-sans');
+            $('body').removeClass('oppo-sans');
+            $('body').removeClass('sf-pro');
             switch (parseInt($('#font-select').val())) {
                 case 1:
-                    $('body').removeClass('harmony-sans');
+                    //$('body').removeClass('harmony-sans');
                     break;
                 case 2:
                     $('body').addClass('harmony-sans');
+                    break;
+                case 2:
+                    $('body').addClass('oppo-sans');
+                    break;
+                case 2:
+                    $('body').addClass('sf-pro');
                     break;
             }
 
