@@ -19,6 +19,7 @@
     "use_current_location": "使用当前位置",
     "match_model": "机型匹配",
     "cancel": "取消",
+    "ok": "确定",
     "save": "保存",
     "saving": "保存中",
     "preview": "预览",
@@ -28,5 +29,7 @@
     "cant_get_your_location": "无法获取位置",
     "matching": "正在匹配……",
     "cannot_get_model_list": "无法获取机型列表",
-    "model_not_found": "未找到对应机型"
+    "model_not_found": "未找到对应机型",
+    "this_image_cannot_be_saved_in_safari": "此图像无法通过 Safari 保存",
+    "changing_font_please_wait": "正在更换字体，请稍候……"
 }
