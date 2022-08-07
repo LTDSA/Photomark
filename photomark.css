@@ -22,6 +22,18 @@
     src: url(./HarmonyOS_Sans_Medium.ttf);
 }
 
+@font-face {
+    font-family: 'SF Pro Display';
+    font-weight: normal;
+    src: url(./fonts/SF-Pro-Display-Regular.otf);
+}
+
+@font-face {
+    font-family: 'SF Pro Display';
+    font-weight: bold;
+    src: url(./fonts/SF-Pro-Display-Medium.otf);
+}
+
 body {
     -webkit-user-select: none;
             user-select: none;
@@ -35,6 +47,9 @@ body {
 .harmony-sans {
     font-family: HarmonyOS Sans !important;
 }
+
+.sf-pro {
+    font-family: SF Pro Display !important;
 
 .mdui-select {
     font-family: MiSans;
