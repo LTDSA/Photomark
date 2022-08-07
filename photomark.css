@@ -23,6 +23,18 @@
 }
 
 @font-face {
+    font-family: 'OPPOSans';
+    font-weight: normal;
+    src: url(./fonts/OPPOSans-R.ttf);
+}
+
+@font-face {
+    font-family: 'OPPOSans';
+    font-weight: bold;
+    src: url(./fonts/OPPOSans-M.ttf);
+}
+
+@font-face {
     font-family: 'SF Pro Display';
     font-weight: normal;
     src: url(./fonts/SF-Pro-Display-Regular.otf);
@@ -46,6 +58,10 @@ body {
 
 .harmony-sans {
     font-family: HarmonyOS Sans !important;
+}
+
+.oppo-sans {
+    font-family: OPPOSans !important;
 }
 
 .sf-pro {
