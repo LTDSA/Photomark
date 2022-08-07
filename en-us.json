@@ -19,6 +19,7 @@
     "use_current_location": "Use current location",
     "match_model": "Match model",
     "cancel": "Cancel",
+    "ok": "OK",
     "save": "Save",
     "saving": "Saving",
     "preview": "Preview",
@@ -28,5 +29,7 @@
     "cant_get_your_location": "Can't get your location",
     "matching": "Matching...",
     "cannot_get_model_list": "Cannot get model list",
-    "model_not_found": "Model not found"
+    "model_not_found": "Model not found",
+    "this_image_cannot_be_saved_in_safari": "This image cannot be saved in Safari",
+    "changing_font_please_wait": "Changing fonts, please wait..."
 }
