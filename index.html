@@ -33,6 +33,10 @@
                         langLib = res;
                     }
                 });
+                mdui.snackbar({
+                    message: 'Failed to load localization data',
+                    position: 'right-top'
+                });
             }
         });
 
@@ -494,6 +498,12 @@
                                 text: getI18n('ok')
                             }
                         ]
+                    });
+                },
+                error: () => {
+                    mdui.snackbar({
+                        message: 'Cannot load contributors',
+                        position: 'right-top'
                     });
                 }
             });
