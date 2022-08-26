@@ -170,7 +170,7 @@
                 <script>document.write(getI18n('not_for_commercial_use'))</script>
             </p>
             <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()"
-                    style="cursor: pointer;">Contributors</a>
+                    style="cursor: pointer;"><script>document.write(getI18n('contributors'))</script></a>
             </p>
         </div>
         <br />
@@ -487,7 +487,7 @@
                         listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} contributions</div></div></div>`
                     });
                     mdui.dialog({
-                        title: 'Contributors',
+                        title: getI18n('save'),
                         content: `<div class="mdui-list">${listLayout}</div>`,
                         buttons: [
                             {
