@@ -130,7 +130,8 @@
                 <label class="mdui-textfield-label">
                     <script>document.write(getI18n('device_name'))</script>
                 </label>
-                <input id="device-input" class="mdui-textfield-input" type="text" readonly />
+                <input id="device-input" class="mdui-textfield-input" type="text" onclick="showModelEditor()"
+                    readonly />
             </div>
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">
@@ -173,8 +174,11 @@
             <p style="margin: 0;">
                 <script>document.write(getI18n('not_for_commercial_use'))</script>
             </p>
-            <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()"
-                    style="cursor: pointer;"><script>document.write(getI18n('contributors'))</script></a>
+            <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">
+                    <script>document.write(getI18n('contributors'))</script>
+                </a> | <a onclick="getFAQ()" style="cursor: pointer;">
+                    <script>document.write(getI18n('faq'))</script>
+                </a>
             </p>
         </div>
         <br />
@@ -477,6 +481,77 @@
             $('#save-btn').text(getI18n('save'));
         }
 
+        function showModelEditor() {
+            if ($('#device-input').val() == 'Unknown') {
+                var deviceMake = photoExif.Make || '';
+                mdui.dialog({
+                    title: getI18n('model_editor'),
+                    content: `<div class="mdui-textfield mdui-textfield-floating-label"><label class="mdui-textfield-label">${getI18n('camera_manufactor')}</label><input id="editor-make" class="mdui-textfield-input" type="text" value="${deviceMake}" /></div><div class="mdui-textfield mdui-textfield-floating-label"><label class="mdui-textfield-label">${getI18n('camera_model')}</label><input id="editor-model" class="mdui-textfield-input" type="text" /></div>`,
+                    buttons: [
+                        {
+                            text: getI18n('cancel')
+                        },
+                        {
+                            text: getI18n('ok'),
+                            close: false,
+                            onClick: () => {
+                                if ($('#editor-make').val() != '' && $('#editor-model').val() != '') {
+                                    photoExif.Make = $('#editor-make').val();
+                                    photoExif.Model = $('#editor-model').val();
+                                    $('#device-input').val(photoExif.Model);
+                                    history.back();
+                                } else {
+                                    mdui.snackbar({
+                                        message: 'Please fill in each blank',
+                                        position: 'right-top'
+                                    });
+                                }
+                            }
+                        }
+                    ]
+                });
+            } else {
+                mdui.snackbar({
+                    message: 'You can only edit unknown model',
+                    position: 'right-top'
+                });
+            }
+        }
+
+        function getFAQ() {
+            var faqContent;
+            $.ajax({
+                url: `./faq_${langType}.html`,
+                async: false,
+                success: res => {
+                    faqContent = res;
+                },
+                error: () => {
+                    $.ajax({
+                        url: './faq_en-us.html',
+                        async: false,
+                        success: res => {
+                            faqContent = res;
+                        }
+                    });
+                    mdui.snackbar({
+                        message: 'Failed to load FAQ content',
+                        position: 'right-top'
+                    });
+                }
+            });
+
+            mdui.dialog({
+                title: getI18n('faq'),
+                content: faqContent,
+                buttons: [
+                    {
+                        text: getI18n('ok')
+                    }
+                ]
+            });
+        }
+
         function getContributors() {
             $.showOverlay();
             $.ajax({
@@ -491,7 +566,7 @@
                         listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} contributions</div></div></div>`
                     });
                     mdui.dialog({
-                        title: getI18n('save'),
+                        title: getI18n('contributors'),
                         content: `<div class="mdui-list">${listLayout}</div>`,
                         buttons: [
                             {
