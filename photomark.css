@@ -1,25 +1,25 @@
 @font-face {
     font-family: 'MiSans';
     font-weight: normal;
-    src: url(./MiSans-Regular.ttf);
+    src: url(./fonts/MiSans-Regular.ttf);
 }
 
 @font-face {
     font-family: 'MiSans';
     font-weight: bold;
-    src: url(./MiSans-Demibold.ttf);
+    src: url(./fonts/MiSans-Demibold.ttf);
 }
 
 @font-face {
     font-family: 'HarmonyOS Sans';
     font-weight: normal;
-    src: url(./HarmonyOS_Sans_Regular.ttf);
+    src: url(./fonts/HarmonyOS_Sans_Regular.ttf);
 }
 
 @font-face {
     font-family: 'HarmonyOS Sans';
     font-weight: bold;
-    src: url(./HarmonyOS_Sans_Medium.ttf);
+    src: url(./fonts/HarmonyOS_Sans_Medium.ttf);
 }
 
 @font-face {
