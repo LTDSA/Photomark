@@ -69,7 +69,9 @@
                 <p id="photo-info" class="mdui-hidden">Unknown</p>
             </div>
         </div>
-        <canvas id="photo-canvas" class="mdui-hidden"></canvas>
+        <div id="photo-canvas-div" class="mdui-ripple mdui-hidden">
+            <canvas id="photo-canvas" class="mdui-shadow-3" style="width: 100%;" onclick="chooseFile()"></canvas>
+        </div>
         <div>
             <div class="mdui-row-xs-2">
                 <div class="mdui-col">
@@ -162,7 +164,7 @@
         </div>
         <br />
         <div class="mdui-float-right">
-            <button id="preview-btn" class="mdui-btn mdui-ripple" onclick="drawImage(true)" disabled>
+            <button id="preview-btn" class="mdui-btn mdui-ripple mdui-hidden" onclick="drawImage(true)" disabled>
                 <script>document.write(getI18n('preview'))</script>
             </button>
             <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
@@ -170,7 +172,7 @@
                 <script>document.write(getI18n('save'))</script>
             </button>
         </div>
-        <br /><br /><br />
+        <br /><br /><br /><br />
         <div class="mdui-typo" style="opacity: .8;">
             <p style="margin: 0;">
                 <script>document.write(getI18n('not_for_commercial_use'))</script>
@@ -294,6 +296,7 @@
                     const { latitude, longitude } = coords;
                     console.log(latitude, longitude);
                     $('#location-input').val(`${changeToDFM(latitude)}N ${changeToDFM(longitude)}E`);
+                    drawImage(true);
                 }, () => {
                     mdui.snackbar({
                         message: getI18n('cant_get_your_location'),
@@ -320,6 +323,7 @@
                     success: res => {
                         if (res[photoExif.Make] && res[photoExif.Make][photoExif.Model]) {
                             $('#device-input').val(res[photoExif.Make][photoExif.Model]);
+                            drawImage(true);
                         } else {
                             mdui.snackbar({
                                 message: getI18n('model_not_found'),
@@ -393,14 +397,14 @@
                             photoCtx.stroke();
 
                             if (preview) {
-                                previewImage();
+                                //previewImage();
                             } else {
                                 saveImage();
                             }
                         }
                     } else {
                         if (preview) {
-                            previewImage();
+                            //previewImage();
                         } else {
                             saveImage();
                         }
@@ -454,6 +458,10 @@
                         if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
 
                         mdui.mutation();
+
+                        $('#photo-area').addClass('mdui-hidden');
+                        $('#photo-canvas-div').removeClass('mdui-hidden');
+                        drawImage(true);
                     });
 
                     if (navigator.userAgent.indexOf('Mobile') > -1 && navigator.userAgent.indexOf('Safari/') > -1 && photoFile.size > 1024 ** 2 * 5) {
@@ -490,6 +498,7 @@
                                     photoExif.Make = $('#editor-make').val();
                                     photoExif.Model = $('#editor-model').val();
                                     $('#device-input').val(photoExif.Model);
+                                    drawImage(true);
                                     history.back();
                                 } else {
                                     mdui.snackbar({
@@ -627,6 +636,20 @@
             readImage(e.dataTransfer.files[0]);
         });
 
+        $('#photo-canvas').on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        $('#photo-canvas-div').on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log(e);
+
+            readImage(e.dataTransfer.files[0]);
+        });
+
         $('#font-select').on('change', () => {
             $('body').removeClass('harmony-sans');
             $('body').removeClass('oppo-sans');
@@ -650,6 +673,16 @@
                 message: getI18n('changing_font_please_wait'),
                 position: 'right-top'
             });
+
+            drawImage(true);
+        });
+
+        $('#logo-select').on('change', () => {
+            drawImage(true);
+        });
+
+        $('#zoom-select').on('change', () => {
+            drawImage(true);
         });
     </script>
 </body>
