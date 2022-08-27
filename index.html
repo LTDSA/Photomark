@@ -219,12 +219,12 @@
             const arr1 = du.split(".");
             const d = arr1[0];
             let tp = "0." + arr1[1]
-            tp = String(tp * 60); //进行强制类型转换
+            tp = String(tp * 60); // 进行强制类型转换
             const arr2 = tp.split(".");
             const f = arr2[0];
             tp = "0." + arr2[1];
             tp = tp * 60;
-            const m = tp.toFixed(0);//保留两位小数
+            const m = tp.toFixed(0); // 保留两位小数
             const dfm = d + "°" + f + "'" + m + "\"";
             return dfm;
         }
@@ -302,7 +302,7 @@
                 });
             } else {
                 mdui.snackbar({
-                    messsge: 'Geolocation is not supported by this browser.',
+                    messsge: getI18n('geolocation_is_not_supported_by_this_browser'),
                     position: 'right-top'
                 });
             }
@@ -336,7 +336,7 @@
                 });
             } else {
                 mdui.snackbar({
-                    message: 'Cannot match unknown model',
+                    message: getI18n('cannot_match_unknown_model'),
                     position: 'right-top'
                 });
             }
@@ -423,7 +423,7 @@
             }
 
             $('#photo-tip').addClass('mdui-hidden');
-            $('#photo-info').text('Loading...');
+            $('#photo-info').text(getI18n('loading'));
             $('#photo-info').removeClass('mdui-hidden');
 
             var reader = new FileReader();
@@ -493,7 +493,7 @@
                                     history.back();
                                 } else {
                                     mdui.snackbar({
-                                        message: 'Please fill in each blank',
+                                        message: getI18n('please_fill_in_each_blank'),
                                         position: 'right-top'
                                     });
                                 }
@@ -503,7 +503,7 @@
                 });
             } else {
                 mdui.snackbar({
-                    message: 'You can only edit unknown model',
+                    message: getI18n('you_can_only_edit_unknown_model'),
                     position: 'right-top'
                 });
             }
@@ -526,7 +526,7 @@
                         }
                     });
                     mdui.snackbar({
-                        message: 'Failed to load FAQ content',
+                        message: getI18n('failed_to_load_faq_content'),
                         position: 'right-top'
                     });
                 }
@@ -554,7 +554,7 @@
                 success: res => {
                     var listLayout = '';
                     res.forEach(i => {
-                        listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} contributions</div></div></div>`
+                        listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} ${getI18n('contributions')}</div></div></div>`
                     });
                     mdui.dialog({
                         title: getI18n('contributors'),
