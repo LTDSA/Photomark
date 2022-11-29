@@ -377,30 +377,31 @@
                     photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
                     photoCtx.drawImage(photoImage, 0, 0, photoWidth, photoHeight);
 
-                    var specLength = $('#lens-input').val().length;
-
                     photoCtx.font = `bold 120px ${fontList[parseInt($('#font-select').val())]}`;
                     photoCtx.fillStyle = 'black';
+
+                    var specLength = photoCtx.measureText($('#lens-input').val()).width;
+
                     photoCtx.fillText($('#device-input').val(), 200, photoHeight + 282);
                     //photoCtx.fillText($('#lens-input').val(), photoImage.width - 1820, photoImage.height + 282);
-                    photoCtx.fillText($('#lens-input').val(), photoWidth - 74 * specLength, photoHeight + 282);
+                    photoCtx.fillText($('#lens-input').val(), photoWidth - specLength - 200, photoHeight + 282);
 
 
                     photoCtx.font = `normal 82px ${fontList[parseInt($('#font-select').val())]}`;
                     photoCanvas.style.letterSpacing = '1px';
                     photoCtx.fillStyle = '#727272';
                     photoCtx.fillText($('#time-input').val(), 200, photoHeight + 434);
-                    photoCtx.fillText($('#location-input').val(), photoWidth - 74 * specLength, photoHeight + 434);
+                    photoCtx.fillText($('#location-input').val(), photoWidth - specLength - 200, photoHeight + 434);
 
                     if ($('#logo-select').val() != 'none') {
                         var logoImage = new Image();
                         logoImage.src = logoList[$('#logo-select').val()];
 
                         logoImage.onload = () => {
-                            photoCtx.drawImage(logoImage, photoWidth - 74 * specLength - 430, photoHeight + 190, 250, 250);
+                            photoCtx.drawImage(logoImage, photoWidth - specLength - 600, photoHeight + 190, 250, 250);
 
-                            photoCtx.moveTo(photoWidth - 74 * specLength - 80, photoHeight + 190);
-                            photoCtx.lineTo(photoWidth - 74 * specLength - 80, photoHeight + 440);
+                            photoCtx.moveTo(photoWidth - specLength - 280, photoHeight + 190);
+                            photoCtx.lineTo(photoWidth - specLength - 280, photoHeight + 440);
                             photoCtx.lineWidth = 10;
                             photoCtx.strokeStyle = '#cccccc';
                             photoCtx.stroke();
@@ -409,11 +410,11 @@
                                 //previewImage();
                                 photoCanvas.toBlob(canvasBlob => {
                                     if (photoCanvas.height > photoCanvas.width) {
-                                        $('#photo-preview').attr('width', '');
+                                        $('#photo-preview').attr('width', '60%');
                                         $('#photo-preview').attr('height', '100%');
                                     } else {
                                         $('#photo-preview').attr('width', '100%');
-                                        $('#photo-preview').attr('height', '');
+                                        $('#photo-preview').attr('height', '60%');
                                     }
                                     $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
                                 });
