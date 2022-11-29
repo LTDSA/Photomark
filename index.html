@@ -53,138 +53,146 @@
 
 <body>
     <div class="mdui-container">
-        <br />
-        <div id="photo-area" class="mdui-color-grey-200 mdui-ripple mdui-img-rounded mdui-valign"
-            style="height: 256px; background-size: contain; background-repeat: no-repeat; background-position: center;"
-            onclick="chooseFile()">
-            <div class="mdui-center" style="text-align: center;">
-                <div id="photo-tip">
-                    <h1>
-                        <script>document.write(getI18n('drag_your_photo_to_here'))</script>
-                    </h1>
-                    <p>
-                        <script>document.write(getI18n('or_click_here_to_choose_a_file'))</script>
+        <div id="main-flex" class="mdui-row-xs-1 mdui-row-sm-2">
+            <div id="photo-col" class="mdui-col">
+
+                <br />
+                <div id="photo-area" class="mdui-color-grey-200 mdui-ripple mdui-img-rounded mdui-valign"
+                    style="height: 256px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                    onclick="chooseFile()">
+                    <div class="mdui-center" style="text-align: center;">
+                        <div id="photo-tip">
+                            <h1>
+                                <script>document.write(getI18n('drag_your_photo_to_here'))</script>
+                            </h1>
+                            <p>
+                                <script>document.write(getI18n('or_click_here_to_choose_a_file'))</script>
+                            </p>
+                        </div>
+                        <p id="photo-info" class="mdui-hidden">Unknown</p>
+                    </div>
+                </div>
+                <div id="photo-container">
+                    <div id="photo-canvas-div" class="mdui-ripple mdui-hidden" style="padding: 4px;">
+                        <canvas id="photo-canvas" class="mdui-hidden"></canvas>
+                        <img id="photo-preview" class="mdui-img-rounded mdui-shadow-3" onclick="chooseFile()">
+                    </div>
+                </div>
+            </div>
+            <div id="info-col" class="mdui-col">
+                <div class="mdui-row-xs-2">
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('logo_type'))</script>
+                            </label>
+                            <select id="logo-select" class="mdui-select mdui-textfield-input">
+                                <option value="none">
+                                    <script>document.write(getI18n('none'))</script>
+                                </option>
+                                <option value="hasselblad">
+                                    <script>document.write(getI18n('hasselbled'))</script>
+                                </option>
+                                <option value="leica">
+                                    <script>document.write(getI18n('leica'))</script>
+                                </option>
+                                <option value="nikon">
+                                    <script>document.write(getI18n('nikon'))</script>
+                                </option>
+                                <option value="oneplus">
+                                    <script>document.write(getI18n('oneplus'))</script>
+                                </option>
+                                <option value="xiaomi">
+                                    <script>document.write(getI18n('xiaomi'))</script>
+                                </option>
+                                <option value="zeiss">
+                                    <script>document.write(getI18n('zeiss'))</script>
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('fonts'))</script>
+                            </label>
+                            <select id="font-select" class="mdui-select mdui-textfield-input">
+                                <option class="mi-sans" value="1">MiSans</option>
+                                <option class="harmony-sans" value="2">HarmonyOS Sans</option>
+                                <option class="oppo-sans" value="3">OPPOSans</option>
+                                <option class="sf-pro" value="4">SF Pro Display</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-textfield">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('image_scale'))</script>
+                    </label>
+                    <select id="zoom-select" class="mdui-select mdui-textfield-input">
+                        <option value="1">
+                            <script>document.write(getI18n('original_size'))</script>
+                        </option>
+                        <option value="2">2x</option>
+                    </select>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('device_name'))</script>
+                    </label>
+                    <input id="device-input" class="mdui-textfield-input" type="text" onclick="showModelEditor()"
+                        readonly />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('time'))</script>
+                    </label>
+                    <input id="time-input" class="mdui-textfield-input" type="text" readonly />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('lens_info'))</script>
+                    </label>
+                    <input id="lens-input" class="mdui-textfield-input" type="text" readonly />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('location'))</script>
+                    </label>
+                    <input id="location-input" class="mdui-textfield-input" type="text" readonly />
+                </div>
+                <div class="mdui-typo">
+                    <a onclick="getLocation()" style="cursor: pointer;">
+                        <script>document.write(getI18n('use_current_location'))</script>
+                    </a> | <a onclick="matchModel()" style="cursor: pointer;">
+                        <script>document.write(getI18n('match_model'))</script>
+                    </a>
+                </div>
+                <br />
+                <div class="mdui-float-right">
+                    <button id="preview-btn" class="mdui-btn mdui-ripple mdui-hidden" onclick="drawImage(true)"
+                        disabled>
+                        <script>document.write(getI18n('preview'))</script>
+                    </button>
+                    <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink"
+                        onclick="drawImage()" disabled>
+                        <script>document.write(getI18n('save'))</script>
+                    </button>
+                </div>
+                <br /><br /><br /><br />
+                <div class="mdui-typo" style="opacity: .8;">
+                    <p style="margin: 0;">
+                        <script>document.write(getI18n('not_for_commercial_use'))</script>
+                    </p>
+                    <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">
+                            <script>document.write(getI18n('contributors'))</script>
+                        </a> | <a onclick="getFAQ()" style="cursor: pointer;">
+                            <script>document.write(getI18n('faq'))</script>
+                        </a>
                     </p>
                 </div>
-                <p id="photo-info" class="mdui-hidden">Unknown</p>
             </div>
         </div>
-        <div id="photo-canvas-div" class="mdui-ripple mdui-hidden" style="padding: 4px;">
-            <canvas id="photo-canvas" class="mdui-img-rounded mdui-shadow-3" style="width: 100%;" onclick="chooseFile()"></canvas>
-        </div>
-        <div>
-            <div class="mdui-row-xs-2">
-                <div class="mdui-col">
-                    <div class="mdui-textfield">
-                        <label class="mdui-textfield-label">
-                            <script>document.write(getI18n('logo_type'))</script>
-                        </label>
-                        <select id="logo-select" class="mdui-select mdui-textfield-input">
-                            <option value="none">
-                                <script>document.write(getI18n('none'))</script>
-                            </option>
-                            <option value="hasselblad">
-                                <script>document.write(getI18n('hasselbled'))</script>
-                            </option>
-                            <option value="leica">
-                                <script>document.write(getI18n('leica'))</script>
-                            </option>
-                            <option value="nikon">
-                                <script>document.write(getI18n('nikon'))</script>
-                            </option>
-                            <option value="oneplus">
-                                <script>document.write(getI18n('oneplus'))</script>
-                            </option>
-                            <option value="xiaomi">
-                                <script>document.write(getI18n('xiaomi'))</script>
-                            </option>
-                            <option value="zeiss">
-                                <script>document.write(getI18n('zeiss'))</script>
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mdui-col">
-                    <div class="mdui-textfield">
-                        <label class="mdui-textfield-label">
-                            <script>document.write(getI18n('fonts'))</script>
-                        </label>
-                        <select id="font-select" class="mdui-select mdui-textfield-input">
-                            <option class="mi-sans" value="1">MiSans</option>
-                            <option class="harmony-sans" value="2">HarmonyOS Sans</option>
-                            <option class="oppo-sans" value="3">OPPOSans</option>
-                            <option class="sf-pro" value="4">SF Pro Display</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-textfield">
-                <label class="mdui-textfield-label">
-                    <script>document.write(getI18n('image_scale'))</script>
-                </label>
-                <select id="zoom-select" class="mdui-select mdui-textfield-input">
-                    <option value="1">
-                        <script>document.write(getI18n('original_size'))</script>
-                    </option>
-                    <option value="2">2x</option>
-                </select>
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">
-                    <script>document.write(getI18n('device_name'))</script>
-                </label>
-                <input id="device-input" class="mdui-textfield-input" type="text" onclick="showModelEditor()"
-                    readonly />
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">
-                    <script>document.write(getI18n('time'))</script>
-                </label>
-                <input id="time-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">
-                    <script>document.write(getI18n('lens_info'))</script>
-                </label>
-                <input id="lens-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">
-                    <script>document.write(getI18n('location'))</script>
-                </label>
-                <input id="location-input" class="mdui-textfield-input" type="text" readonly />
-            </div>
-            <div class="mdui-typo">
-                <a onclick="getLocation()" style="cursor: pointer;">
-                    <script>document.write(getI18n('use_current_location'))</script>
-                </a> | <a onclick="matchModel()" style="cursor: pointer;">
-                    <script>document.write(getI18n('match_model'))</script>
-                </a>
-            </div>
-        </div>
-        <br />
-        <div class="mdui-float-right">
-            <button id="preview-btn" class="mdui-btn mdui-ripple mdui-hidden" onclick="drawImage(true)" disabled>
-                <script>document.write(getI18n('preview'))</script>
-            </button>
-            <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" onclick="drawImage()"
-                disabled>
-                <script>document.write(getI18n('save'))</script>
-            </button>
-        </div>
-        <br /><br /><br /><br />
-        <div class="mdui-typo" style="opacity: .8;">
-            <p style="margin: 0;">
-                <script>document.write(getI18n('not_for_commercial_use'))</script>
-            </p>
-            <p style="margin: 0;">© LTDSA 2022 | <a onclick="getContributors()" style="cursor: pointer;">
-                    <script>document.write(getI18n('contributors'))</script>
-                </a> | <a onclick="getFAQ()" style="cursor: pointer;">
-                    <script>document.write(getI18n('faq'))</script>
-                </a>
-            </p>
-        </div>
-        <br />
     </div>
     <script>
         var $ = mdui.$;
@@ -398,6 +406,16 @@
 
                             if (preview) {
                                 //previewImage();
+                                photoCanvas.toBlob(canvasBlob => {
+                                    if (photoCanvas.height > photoCanvas.width) {
+                                        $('#photo-preview').attr('width', '');
+                                        $('#photo-preview').attr('height', '100%');
+                                    } else {
+                                        $('#photo-preview').attr('width', '100%');
+                                        $('#photo-preview').attr('height', '');
+                                    }
+                                    $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
+                                });
                             } else {
                                 saveImage();
                             }
@@ -405,6 +423,16 @@
                     } else {
                         if (preview) {
                             //previewImage();
+                            photoCanvas.toBlob(canvasBlob => {
+                                if (photoCanvas.height > photoCanvas.width) {
+                                    $('#photo-preview').attr('width', '60%');
+                                    $('#photo-preview').attr('height', '100%');
+                                } else {
+                                    $('#photo-preview').attr('width', '100%');
+                                    $('#photo-preview').attr('height', '60%');
+                                }
+                                $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
+                            });
                         } else {
                             saveImage();
                         }
@@ -446,7 +474,7 @@
                         console.log(res);
                         photoExif = res;
                         if (res.Model) $('#device-input').val(res.Model);
-                        if (res['39424'] && typeof res['39424'] == 'string') $('#device-input').val(res['39424']);
+                        if (res['39424'] && typeof res['39424'] == 'string') $('#device-input').val(res['39424']); // Xiaomi
                         if (res.CreateDate) $('#time-input').val(new Date(res.CreateDate).format('yyyy.MM.dd hh:mm:ss'));
 
                         if (res.FocalLength) $('#lens-input').val(`${parseInt(res.FocalLength)}mm`);
@@ -636,7 +664,7 @@
             readImage(e.dataTransfer.files[0]);
         });
 
-        $('#photo-canvas').on('dragover', function (e) {
+        $('#photo-preview').on('dragover', function (e) {
             e.preventDefault();
             e.stopPropagation();
         });

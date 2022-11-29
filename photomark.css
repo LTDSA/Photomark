@@ -81,9 +81,56 @@ h1 {
 }
 
 @media (min-width: 600px) {
+    :root {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .mdui-container,
+    #main-flex,
+    #photo-col {
+        height: 100%;
+    }
+
+    #photo-col {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+        align-items: center !important;
+    }
+
+    #photo-container {
+        text-align: center;
+    }
+
+    #photo-area {
+        width: calc(100% - 32px);
+        height: 40% !important;
+    }
+
+    #photo-canvas-div {
+        max-width: calc(100% - 32px);
+    }
+
+    #info-col {
+        height: calc(100% - 16px);
+        overflow-y: auto;
+
+        margin-top: 8px;
+        margin-right: -8px;
+
+        padding-right: 8px;
+    }
+
     .mdui-snackbar-right-top {
         -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12) !important;
-                box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12) !important;
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12) !important;
 
         border-radius: 6px;
     }
