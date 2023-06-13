@@ -3,23 +3,30 @@
         "Canon EOS M50m2": "Canon EOS M50 Mark II"
     },
     "DJI": {
+        "FC1102": "DJI Spark",
         "FC200": "DJI Phantom 2 Vision",
         "FC220": "DJI Mavic Pro",
+        "FC2103": "DJI Mavic Air",
+        "FC2204": "DJI Mavic 2 Zoom",
         "FC300S": "DJI Phantom 3 Advanced",
         "FC300SE": "DJI Phantom 3 SE",
         "FC300X": "DJI Phantom 3 Pro",
         "FC330": "DJI Phantom 4",
         "FC350H": "DJI Zenmuse X3",
         "FC350Z": "DJI Zenmuse X3 Zoom",
-        "FC550": "DJI Zenmuse X5",
         "FC3170": "DJI Mavic Air 2",
         "FC3411": "DJI Air 2S",
         "FC3582": "DJI Mini 3 Pro",
         "FC4170": "DJI Mavic 3",
+        "FC550": "DJI Zenmuse X5",
         "FC6310": "DJI Phantom 4 Pro",
         "FC6310R": "DJI Phantom 4 RTK",
+        "FC6510": "DJI Zenmuse X4S",
         "FC6520": "DJI Zenmuse X5S",
-        "FC7303": "DJI Mini 2"
+        "FC6540": "DJI Zenmuse X7",
+        "FC7203": "DJI Mavic Mini",
+        "FC7303": "DJI Mini 2",
+        "FC8183": "DJI Avata"
     },
     "HONOR": {
         "BMH-AN10": "HONOR 30",
