@@ -13,6 +13,7 @@
     "fonts": "字体",
     "image_scale": "图片缩放",
     "original_size": "原始尺寸",
+    "export_quality": "导出质量",
     "device_name": "设备名称",
     "time": "时间",
     "lens_info": "镜头信息",

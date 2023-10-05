@@ -125,16 +125,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="mdui-textfield">
-                    <label class="mdui-textfield-label">
-                        <script>document.write(getI18n('image_scale'))</script>
-                    </label>
-                    <select id="zoom-select" class="mdui-select mdui-textfield-input">
-                        <option value="1">
-                            <script>document.write(getI18n('original_size'))</script>
-                        </option>
-                        <option value="2">2x</option>
-                    </select>
+                <div class="mdui-row-xs-2">
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('image_scale'))</script>
+                            </label>
+                            <select id="zoom-select" class="mdui-select mdui-textfield-input">
+                                <option value="1">
+                                    <script>document.write(getI18n('original_size'))</script>
+                                </option>
+                                <option value="2">2x</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('export_quality'))</script>
+                            </label>
+                            <select id="quality-select" class="mdui-select mdui-textfield-input">
+                                <option value="100">100%</option>
+                                <option value="80">80%</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
                     <label class="mdui-textfield-label">
@@ -259,6 +274,7 @@
         function previewImage() {
             $.showOverlay();
             var imageHeight;
+            var exportQuality = Number($('#quality-select').val()) / 100;
             photoCanvas.toBlob(canvasBlob => {
                 imageHeight = `${document.body.clientWidth * .85 / photoCanvas.width * photoCanvas.height}px`;
                 $.hideOverlay();
@@ -277,12 +293,13 @@
                         }
                     ]
                 });
-            });
+            }, 'image/jpg', exportQuality);
         }
 
         function saveImage() {
             $('#save-btn').text(getI18n('saving'));
             document.querySelector('#save-btn').disabled = true;
+            var exportQuality = Number($('#quality-select').val()) / 100;
             photoCanvas.toBlob(canvasBlob => {
                 var imageLink = document.createElement('a');
                 imageLink.download = `photomark_${new Date().format('yyyyMMddhhmmss')}.jpg`;
@@ -290,7 +307,7 @@
                 imageLink.click();
                 $('#save-btn').text(getI18n('save'));
                 document.querySelector('#save-btn').disabled = false;
-            });
+            }, 'image/jpg', exportQuality);
         }
 
         function getLocation() {
@@ -408,6 +425,7 @@
 
                             if (preview) {
                                 //previewImage();
+                                var exportQuality = Number($('#quality-select').val()) / 100;
                                 photoCanvas.toBlob(canvasBlob => {
                                     if (photoCanvas.height > photoCanvas.width) {
                                         $('#photo-preview').attr('width', '60%');
@@ -417,7 +435,7 @@
                                         $('#photo-preview').attr('height', '60%');
                                     }
                                     $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
-                                });
+                                }, 'image/jpg', exportQuality);
                             } else {
                                 saveImage();
                             }
@@ -425,6 +443,7 @@
                     } else {
                         if (preview) {
                             //previewImage();
+                            var exportQuality = Number($('#quality-select').val()) / 100;
                             photoCanvas.toBlob(canvasBlob => {
                                 if (photoCanvas.height > photoCanvas.width) {
                                     $('#photo-preview').attr('width', '60%');
@@ -434,7 +453,7 @@
                                     $('#photo-preview').attr('height', '60%');
                                 }
                                 $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
-                            });
+                            }, 'image/jpg', exportQuality);
                         } else {
                             saveImage();
                         }

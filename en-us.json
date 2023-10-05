@@ -13,6 +13,7 @@
     "fonts": "Fonts",
     "image_scale": "Image scale",
     "original_size": "Original size",
+    "export_quality": "Export quality",
     "device_name": "Device name",
     "time": "Time",
     "lens_info": "Lens info",
