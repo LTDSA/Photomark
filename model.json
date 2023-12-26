@@ -29,6 +29,7 @@
         "FC8183": "DJI Avata"
     },
     "HONOR": {
+        "BKL-AL00": "HONOR V10",
         "BMH-AN10": "HONOR 30",
         "BMH-AN20": "HONOR 30",
         "BMH-TN10": "HONOR 30",
@@ -42,10 +43,16 @@
     },
     "HUAWEI": {
         "ABR-AL60": "HUAWEI P50E",
+        "ALN-AL00": "HUAWEI Mate 60 Pro",
+        "ALN-AL10": "HUAWEI Mate 60 Pro",
+        "ALN-AL80": "HUAWEI Mate 60 Pro",
+        "ALN-LX9": "HUAWEI Mate 60 Pro",
         "ALP-AL00": "HUAWEI Mate 10",
         "ANA-AN00": "HUAWEI P40",
         "ANA-TN00": "HUAWEI P40",
         "BLA-AL00": "HUAWEI Mate 10 Pro",
+        "BRA-AL00": "HUAWEI Mate 60",
+        "BRA-LX9": "HUAWEI Mate 60",
         "CLT-AL00": "HUAWEI P20 Pro",
         "CRR-CL00": "HUAWEI Mate S",
         "CRR-TL00": "HUAWEI Mate S",
