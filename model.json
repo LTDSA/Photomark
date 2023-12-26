@@ -104,7 +104,17 @@
     },
     "SONY": {
         "DSC-RX0M2": "SONY RX0 II",
+        "ILCE-6000": "Sony Alpha 6000",
+        "ILCE-6100": "Sony Alpha 6100",
+        "ILCE-6300": "Sony Alpha 6300",
+        "ILCE-6400": "Sony Alpha 6400",
+        "ILCE-6500": "Sony Alpha 6500",
+        "ILCE-6600": "Sony Alpha 6600",
+        "ILCE-6700": "Sony Alpha 6700",
         "ILCE-7": "SONY Alpha 7",
+        "ILCE-7C": "SONY Alpha 7C",
+        "ILCE-7CM2": "SONY Alpha 7C II",
+        "ILCE-7CR": "SONY Alpha 7CR",
         "ILCE-7M2": "SONY Alpha 7 II",
         "ILCE-7M3": "SONY Alpha 7 III",
         "ILCE-7M4": "SONY Alpha 7 IV",
@@ -115,7 +125,13 @@
         "ILCE-7RM5": "SONY Alpha 7R V",
         "ILCE-7S": "SONY Alpha 7S",
         "ILCE-7SM2": "SONY Alpha 7S II",
-        "ILCE-7SM3": "SONY Alpha 7S III"
+        "ILCE-7SM3": "SONY Alpha 7S III",
+        "ILCE-9": "SONY Alpha 9",
+        "ILCE-9M2": "SONY Alpha 9 II",
+        "ILCE-9M3": "SONY Alpha 9 III",
+        "ZV-1": "SONY ZV-1",
+        "ZV-E1": "SONY ZV-E1",
+        "ZV-E10": "SONY ZV-E10"
     },
     "Sony": {
         "SO-01E": "Xperia AX",
