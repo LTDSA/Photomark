@@ -1,0 +1,24 @@
+{
+  "name": "photomark",
+  "version": "1.0.0",
+  "description": "A tool to add watermark on a picture.",
+  "scripts": {
+    "test": "node tests/model-matcher.cjs && node tests/watermark.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LTDSA/Photomark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0-only",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LTDSA/Photomark/issues"
+  },
+  "homepage": "https://github.com/LTDSA/Photomark#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  },
+  "private": true
+}
