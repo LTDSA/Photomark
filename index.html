@@ -13,6 +13,9 @@
     <script src="https://cdn.staticfile.org/mdui/1.0.2/js/mdui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
     <script src="./logo.js"></script>
+    <script src="./brand-logos.js"></script>
+    <script src="./model-matcher.js"></script>
+    <script src="./watermark-styles.js"></script>
     <script>
         var $ = mdui.$;
         var langLib;
@@ -80,34 +83,53 @@
                 </div>
             </div>
             <div id="info-col" class="mdui-col">
+                <!-- 水印样式统一驱动预览与导出；重复文字仅在对应样式中显示。 -->
+                <div class="mdui-textfield">
+                    <label for="style-select" class="mdui-textfield-label"><script>document.write(getI18n('watermark_style'))</script></label>
+                    <select id="style-select" class="mdui-select mdui-textfield-input">
+                        <option value="classic"><script>document.write(getI18n('style_classic'))</script></option>
+                        <option value="rounded"><script>document.write(getI18n('style_rounded'))</script></option>
+                        <option value="overlay"><script>document.write(getI18n('style_overlay'))</script></option>
+                        <option value="vintage"><script>document.write(getI18n('style_vintage'))</script></option>
+                        <option value="watermark"><script>document.write(getI18n('style_watermark'))</script></option>
+                    </select>
+                </div>
+                <div id="watermark-text-field" class="mdui-textfield mdui-hidden">
+                    <label for="watermark-input" class="mdui-textfield-label"><script>document.write(getI18n('watermark_text'))</script></label>
+                    <input id="watermark-input" class="mdui-textfield-input" type="text" maxlength="120" value="© Photomark">
+                </div>
                 <div class="mdui-row-xs-2">
                     <div class="mdui-col">
                         <div class="mdui-textfield">
                             <label class="mdui-textfield-label">
                                 <script>document.write(getI18n('logo_type'))</script>
                             </label>
+                            <!-- 本地品牌 SVG 与原有品牌共用同一选择器和绘制流程。 -->
                             <select id="logo-select" class="mdui-select mdui-textfield-input">
-                                <option value="none">
-                                    <script>document.write(getI18n('none'))</script>
-                                </option>
-                                <option value="hasselblad">
-                                    <script>document.write(getI18n('hasselbled'))</script>
-                                </option>
-                                <option value="leica">
-                                    <script>document.write(getI18n('leica'))</script>
-                                </option>
-                                <option value="nikon">
-                                    <script>document.write(getI18n('nikon'))</script>
-                                </option>
-                                <option value="oneplus">
-                                    <script>document.write(getI18n('oneplus'))</script>
-                                </option>
-                                <option value="xiaomi">
-                                    <script>document.write(getI18n('xiaomi'))</script>
-                                </option>
-                                <option value="zeiss">
-                                    <script>document.write(getI18n('zeiss'))</script>
-                                </option>
+                                <option value="auto" selected><script>document.write(getI18n('auto_brand'))</script></option>
+                                <option value="none"><script>document.write(getI18n('none'))</script></option>
+                                <option value="apple"><script>document.write(getI18n('apple'))</script></option>
+                                <option value="canon"><script>document.write(getI18n('canon'))</script></option>
+                                <option value="dji"><script>document.write(getI18n('dji'))</script></option>
+                                <option value="fujifilm"><script>document.write(getI18n('fujifilm'))</script></option>
+                                <option value="hasselblad"><script>document.write(getI18n('hasselblad'))</script></option>
+                                <option value="huawei"><script>document.write(getI18n('huawei'))</script></option>
+                                <option value="insta360"><script>document.write(getI18n('insta360'))</script></option>
+                                <option value="kodak"><script>document.write(getI18n('kodak'))</script></option>
+                                <option value="konicaminolta"><script>document.write(getI18n('konicaminolta'))</script></option>
+                                <option value="leica"><script>document.write(getI18n('leica'))</script></option>
+                                <option value="lumix"><script>document.write(getI18n('lumix'))</script></option>
+                                <option value="mamiya"><script>document.write(getI18n('mamiya'))</script></option>
+                                <option value="nikon"><script>document.write(getI18n('nikon'))</script></option>
+                                <option value="olympus"><script>document.write(getI18n('olympus'))</script></option>
+                                <option value="pentax"><script>document.write(getI18n('pentax'))</script></option>
+                                <option value="phaseone"><script>document.write(getI18n('phaseone'))</script></option>
+                                <option value="rollei"><script>document.write(getI18n('rollei'))</script></option>
+                                <option value="sony"><script>document.write(getI18n('sony'))</script></option>
+                                <option value="unknow"><script>document.write(getI18n('unknow'))</script></option>
+                                <option value="xiaomi"><script>document.write(getI18n('xiaomi'))</script></option>
+                                <option value="oneplus"><script>document.write(getI18n('oneplus'))</script></option>
+                                <option value="zeiss"><script>document.write(getI18n('zeiss'))</script></option>
                             </select>
                         </div>
                     </div>
@@ -162,7 +184,7 @@
                     <label class="mdui-textfield-label">
                         <script>document.write(getI18n('time'))</script>
                     </label>
-                    <input id="time-input" class="mdui-textfield-input" type="text" readonly />
+                    <input id="time-input" class="mdui-textfield-input" type="text" />
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
                     <label class="mdui-textfield-label">
@@ -262,12 +284,7 @@
             fileInput.click();
 
             fileInput.onchange = (e) => {
-                console.log(e);
-                if (navigator.userAgent.indexOf('Safari/') > -1) {
-                    readImage(e.target.files[0]);
-                } else {
-                    readImage(e.path[0].files[0]);
-                }
+                if (e.target.files[0]) readImage(e.target.files[0]);
             }
         }
 
@@ -337,134 +354,102 @@
             }
         }
 
-        function matchModel() {
-            if (photoExif.Make && photoExif.Model) {
-                mdui.snackbar({
-                    message: getI18n('matching'),
-                    position: 'right-top'
-                });
-                $.ajax({
-                    url: './model.json',
-                    dataType: 'json',
-                    success: res => {
-                        if (res[photoExif.Make] && res[photoExif.Make][photoExif.Model]) {
-                            $('#device-input').val(res[photoExif.Make][photoExif.Model]);
-                            drawImage(true);
-                        } else {
-                            mdui.snackbar({
-                                message: getI18n('model_not_found'),
-                                position: 'right-top'
-                            });
-                        }
-                    },
-                    error: () => {
-                        mdui.snackbar({
-                            message: getI18n('cannot_get_model_list'),
-                            position: 'right-top'
-                        });
-                    }
-                });
-            } else {
-                mdui.snackbar({
-                    message: getI18n('cannot_match_unknown_model'),
-                    position: 'right-top'
-                });
+        /** 手动查询与导入使用同一匹配规则；切换照片后丢弃旧查询结果。 */
+        async function matchModel() {
+            const version = photoLoadVersion;
+            const result = await ModelMatcher.resolve(photoExif || {});
+            if (version !== photoLoadVersion) return;
+            $('#device-input').val(result.name || 'Unknown');
+            await drawImage(true);
+            if (!result.matched) {
+                mdui.snackbar({ message: getI18n(result.error ? 'cannot_get_model_list' : 'model_not_found'), position: 'right-top' });
             }
         }
 
-        function drawImage(preview) {
-            if (typeof preview == 'undefined') preview = false;
-            var reader = new FileReader();
-            reader.onload = (e) => {
-                var photoImage = new Image();
-                photoImage.src = e.target.result;
-                photoImage.onload = () => {
-                    var photoWidth = photoImage.width;
-                    var photoHeight = photoImage.height;
+        // 请求序号阻止快速切换样式时旧的异步结果覆盖最新预览。
+        let renderVersion = 0;
+        let previewUrl;
 
-                    if (parseInt($('#zoom-select').val()) == 2) {
-                        photoWidth = photoWidth * 2;
-                        photoHeight = photoHeight * 2;
-                    }
-
-                    photoCanvas.width = photoWidth;
-                    photoCanvas.height = photoHeight + 614;
-
-                    photoCtx.fillStyle = 'white';
-                    photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
-                    photoCtx.drawImage(photoImage, 0, 0, photoWidth, photoHeight);
-
-                    photoCtx.font = `bold 120px ${fontList[parseInt($('#font-select').val())]}`;
-                    photoCtx.fillStyle = 'black';
-
-                    var specLength = photoCtx.measureText($('#lens-input').val()).width;
-
-                    photoCtx.fillText($('#device-input').val(), 200, photoHeight + 282);
-                    //photoCtx.fillText($('#lens-input').val(), photoImage.width - 1820, photoImage.height + 282);
-                    photoCtx.fillText($('#lens-input').val(), photoWidth - specLength - 200, photoHeight + 282);
-
-
-                    photoCtx.font = `normal 82px ${fontList[parseInt($('#font-select').val())]}`;
-                    photoCanvas.style.letterSpacing = '1px';
-                    photoCtx.fillStyle = '#727272';
-                    photoCtx.fillText($('#time-input').val(), 200, photoHeight + 434);
-                    photoCtx.fillText($('#location-input').val(), photoWidth - specLength - 200, photoHeight + 434);
-
-                    if ($('#logo-select').val() != 'none') {
-                        var logoImage = new Image();
-                        logoImage.src = logoList[$('#logo-select').val()];
-
-                        logoImage.onload = () => {
-                            photoCtx.drawImage(logoImage, photoWidth - specLength - 600, photoHeight + 190, 250, 250);
-
-                            photoCtx.moveTo(photoWidth - specLength - 280, photoHeight + 190);
-                            photoCtx.lineTo(photoWidth - specLength - 280, photoHeight + 440);
-                            photoCtx.lineWidth = 10;
-                            photoCtx.strokeStyle = '#cccccc';
-                            photoCtx.stroke();
-
-                            if (preview) {
-                                //previewImage();
-                                var exportQuality = Number($('#quality-select').val()) / 100;
-                                photoCanvas.toBlob(canvasBlob => {
-                                    if (photoCanvas.height > photoCanvas.width) {
-                                        $('#photo-preview').attr('width', '60%');
-                                        $('#photo-preview').attr('height', '100%');
-                                    } else {
-                                        $('#photo-preview').attr('width', '100%');
-                                        $('#photo-preview').attr('height', '60%');
-                                    }
-                                    $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
-                                }, 'image/jpg', exportQuality);
-                            } else {
-                                saveImage();
-                            }
-                        }
-                    } else {
-                        if (preview) {
-                            //previewImage();
-                            var exportQuality = Number($('#quality-select').val()) / 100;
-                            photoCanvas.toBlob(canvasBlob => {
-                                if (photoCanvas.height > photoCanvas.width) {
-                                    $('#photo-preview').attr('width', '60%');
-                                    $('#photo-preview').attr('height', '100%');
-                                } else {
-                                    $('#photo-preview').attr('width', '100%');
-                                    $('#photo-preview').attr('height', '60%');
-                                }
-                                $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
-                            }, 'image/jpg', exportQuality);
-                        } else {
-                            saveImage();
-                        }
-                    }
-                }
-            };
-
-            reader.readAsDataURL(photoFile);
+        /** 等待图片解码，失败时交给调用方显示统一错误提示。 */
+        function loadPhoto(source) {
+            return new Promise((resolve, reject) => {
+                const image = new Image();
+                image.onload = () => resolve(image);
+                image.onerror = reject;
+                image.src = source;
+            });
         }
 
+        /** 读取界面快照，在独立画布中绘制，再统一生成 JPEG 预览或下载。 */
+        async function drawImage(preview = false) {
+            if (!photoFile) return;
+            const version = ++renderVersion;
+            const source = URL.createObjectURL(photoFile);
+            // 自动模式每次根据当前照片重新识别，手动指定品牌则保持用户选择。
+            const selectedBrand = $('#logo-select').val();
+            const logoKey = selectedBrand === 'auto' ? detectPhotoBrand(photoExif) : selectedBrand;
+            const family = fontList[Number($('#font-select').val())];
+            const options = {
+                style: $('#style-select').val(),
+                zoom: Number($('#zoom-select').val()) === 2 ? 2 : 1,
+                font: family ? '"' + family + '", sans-serif' : 'sans-serif',
+                data: {
+                    device: $('#device-input').val(),
+                    time: $('#time-input').val(),
+                    lens: $('#lens-input').val(),
+                    location: $('#location-input').val(),
+                    watermark: $('#watermark-input').val().trim()
+                }
+            };
+            const quality = Number($('#quality-select').val()) / 100;
+            try {
+                const [photo, logo] = await Promise.all([
+                    loadPhoto(source),
+                    logoKey === 'none' ? Promise.resolve(null) : loadPhoto(logoList[logoKey]),
+                    document.fonts.load('20px ' + options.font)
+                ]);
+                if (version !== renderVersion) return;
+                options.image = logo;
+                const rendered = document.createElement('canvas');
+                WatermarkStyles.render(rendered, photo, options);
+                const blob = await new Promise(resolve => rendered.toBlob(resolve, 'image/jpeg', quality));
+                if (version !== renderVersion) return;
+                if (!blob) throw new Error('Canvas encoding failed');
+                photoCanvas.width = rendered.width;
+                photoCanvas.height = rendered.height;
+                photoCtx.drawImage(rendered, 0, 0);
+                if (preview) {
+                    const previousUrl = previewUrl;
+                    previewUrl = URL.createObjectURL(blob);
+                    $('#photo-preview').attr('width', rendered.height > rendered.width ? '60%' : '100%');
+                    $('#photo-preview').removeAttr('height');
+                    $('#photo-preview').attr('src', previewUrl);
+                    if (previousUrl) URL.revokeObjectURL(previousUrl);
+                } else {
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    link.download = 'photomark_' + new Date().format('yyyyMMddhhmmss') + '.jpg';
+                    link.href = url;
+                    link.click();
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                }
+            } catch (error) {
+                if (version === renderVersion) {
+                    mdui.snackbar({ message: getI18n('render_failed'), position: 'right-top' });
+                }
+                console.error(error);
+            } finally {
+                URL.revokeObjectURL(source);
+            }
+        }
+
+        // 图片读取、EXIF 解析和机型匹配共享版本号，避免连续导入串用信息。
+        let photoLoadVersion = 0;
         function readImage(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const loadVersion = ++photoLoadVersion;
+            ++renderVersion;
+            photoExif = {};
             photoFile = file;
             console.log(photoFile);
             if (photoFile.type.indexOf('image') == -1) {
@@ -481,9 +466,11 @@
 
             var reader = new FileReader();
             reader.onload = (e) => {
+                if (loadVersion !== photoLoadVersion) return;
                 var photoImage = new Image();
                 photoImage.src = e.target.result;
                 photoImage.onload = () => {
+                    if (loadVersion !== photoLoadVersion) return;
                     $('#photo-info').html(`${photoFile.name}<br />${photoImage.width}x${photoImage.height}`);
 
                     $('#device-input').val('Unknown');
@@ -491,11 +478,14 @@
                     $('#lens-input').val('Unknown');
                     $('#location-input').val('Unknown');
 
-                    exifr.parse(e.target.result).then(res => {
+                    Promise.resolve().then(() => exifr.parse(e.target.result)).catch(() => ({})).then(async res => {
+                        if (loadVersion !== photoLoadVersion) return;
                         console.log(res);
+                        res = res || {};
                         photoExif = res;
-                        if (res.Model) $('#device-input').val(res.Model);
-                        if (res['39424'] && typeof res['39424'] == 'string') $('#device-input').val(res['39424']); // Xiaomi
+                        const modelResult = await ModelMatcher.resolve(res);
+                        if (loadVersion !== photoLoadVersion) return;
+                        $('#device-input').val(modelResult.name || 'Unknown');
                         if (res.CreateDate) $('#time-input').val(new Date(res.CreateDate).format('yyyy.MM.dd hh:mm:ss'));
 
                         if (res.FocalLength) $('#lens-input').val(`${parseInt(res.FocalLength)}mm`);
@@ -725,6 +715,17 @@
 
             drawImage(true);
         });
+
+        // 切换款式时仅显示相关输入，并立即刷新已有照片。
+        $('#style-select').on('change', () => {
+            if ($('#style-select').val() === 'watermark') {
+                $('#watermark-text-field').removeClass('mdui-hidden');
+            } else {
+                $('#watermark-text-field').addClass('mdui-hidden');
+            }
+            drawImage(true);
+        });
+        $('#watermark-input, #time-input').on('input', () => drawImage(true));
 
         $('#logo-select').on('change', () => {
             drawImage(true);

@@ -5,17 +5,17 @@
     "DJI": {
         "FC1102": "DJI Spark",
         "FC200": "DJI Phantom 2 Vision",
-        "FC220": "DJI Mavic Pro",
         "FC2103": "DJI Mavic Air",
+        "FC220": "DJI Mavic Pro",
         "FC2204": "DJI Mavic 2 Zoom",
         "FC300S": "DJI Phantom 3 Advanced",
         "FC300SE": "DJI Phantom 3 SE",
         "FC300X": "DJI Phantom 3 Pro",
+        "FC3170": "DJI Mavic Air 2",
         "FC330": "DJI Phantom 4",
+        "FC3411": "DJI Air 2S",
         "FC350H": "DJI Zenmuse X3",
         "FC350Z": "DJI Zenmuse X3 Zoom",
-        "FC3170": "DJI Mavic Air 2",
-        "FC3411": "DJI Air 2S",
         "FC3582": "DJI Mini 3 Pro",
         "FC4170": "DJI Mavic 3",
         "FC550": "DJI Zenmuse X5",
@@ -97,8 +97,8 @@
         "TAH-AN00m": "HUAWEI Mate Xs",
         "TAS-AL00": "HUAWEI Mate 30",
         "TAS-AN00": "HUAWEI Mate 30 5G",
-        "VOG-AL00": "HUAWEI P30 Pro",
         "VKY-AL00": "HUAWEI P10 Plus",
+        "VOG-AL00": "HUAWEI P30 Pro",
         "VTR-AL00": "HUAWEI P10"
     },
     "OnePlus": {
@@ -111,6 +111,8 @@
     },
     "SONY": {
         "DSC-RX0M2": "SONY RX0 II",
+        "ILCE-1": "SONY Alpha 1",
+        "ILCE-1M2": "SONY Alpha 1 II",
         "ILCE-6000": "Sony Alpha 6000",
         "ILCE-6100": "Sony Alpha 6100",
         "ILCE-6300": "Sony Alpha 6300",
@@ -125,20 +127,27 @@
         "ILCE-7M2": "SONY Alpha 7 II",
         "ILCE-7M3": "SONY Alpha 7 III",
         "ILCE-7M4": "SONY Alpha 7 IV",
+        "ILCE-7M5": "SONY Alpha 7 V",
         "ILCE-7R": "SONY Alpha 7R",
         "ILCE-7RM2": "SONY Alpha 7R II",
         "ILCE-7RM3": "SONY Alpha 7R III",
         "ILCE-7RM4": "SONY Alpha 7R IV",
         "ILCE-7RM5": "SONY Alpha 7R V",
+        "ILCE-7RM6": "SONY Alpha 7R VI",
         "ILCE-7S": "SONY Alpha 7S",
         "ILCE-7SM2": "SONY Alpha 7S II",
         "ILCE-7SM3": "SONY Alpha 7S III",
         "ILCE-9": "SONY Alpha 9",
         "ILCE-9M2": "SONY Alpha 9 II",
         "ILCE-9M3": "SONY Alpha 9 III",
+        "ILME-FX2": "SONY FX2",
+        "ILME-FX3": "SONY FX3",
+        "ILME-FX30": "SONY FX30",
+        "ILME-FX3A": "SONY FX3A",
         "ZV-1": "SONY ZV-1",
         "ZV-E1": "SONY ZV-E1",
-        "ZV-E10": "SONY ZV-E10"
+        "ZV-E10": "SONY ZV-E10",
+        "ZV-E10M2": "SONY ZV-E10 II"
     },
     "Sony": {
         "SO-01E": "Xperia AX",
@@ -169,5 +178,9 @@
         "SO-51B": "Xperia 1 III",
         "SO-52A": "Xperia 5 II",
         "SO-52B": "Xperia 10 III"
+    },
+    "Xiaomi": {
+        "24030PN60G": "Xiaomi 14 Ultra",
+        "25010PN30G": "Xiaomi 15 Ultra"
     }
 }
